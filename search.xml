@@ -138,9 +138,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[传统构造函数存在的问题]]></title>
-    <url>%2F2016%2F10%2F02%2F%E4%BC%A0%E7%BB%9F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[1. 发现问题现有构造函数如下： 1234567function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = function()&#123; console.log("你好"); &#125;&#125; 调用该构造函数创建对象，并对比创建出来的对象的sayHi方法：1234var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为false 由于每个对象都是由new Person创建出来的，因此每创建一个对象，函数sayHi都会被重新创建一次，这个时候，每个对象都拥有一个独立的，但是功能完全相同的方法。 功能相同的函数，完全没有必要再内存中存在这么多份。所以就造成了资源浪费。 2. 解决问题这里最好的办法就是将函数体放在构造函数之外. 在构造函数中只需要引用该函数即可。 1234567891011121314function sayHello()&#123; console.log("你好");&#125;function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = sayHello;&#125;//调用该构造函数创建对象，并对比创建出来的对象的sayHi方法var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为true 这样写依然存在问题： 全局变量增多，会增加引入框架命名冲突的风险 代码结构混乱，会变得难以维护]]></content>
+    <title><![CDATA[作用域]]></title>
+    <url>%2F2016%2F10%2F02%2F%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
+    <content type="text"><![CDATA[作用域域，表示的是一个范围，作用域，就是作用范围。 作用域说明的是一个变量可以在什么地方被使用，什么地方不能被使用。 块级作用域JavaScript中没有块级作用域 1234567&#123; var num = 123; &#123; console.log( num ); &#125;&#125;console.log( num ); 上面这段代码在JavaScript中是不会报错的，但是在其他的编程语言中（C#、C、JAVA）会报错。 这是因为，在JavaScript中没有块级作用域，使用{}标记出来的代码块中声明的变量num，是可以被{}外面访问到的。 但是在其他的编程语言中，有块级作用域，那么{}中声明的变量num，是不能在代码块外部访问的，所以报错。 词法作用域什么是词法作用域？ 词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域. 在 js 中词法作用域规则: 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字 例子1：123456789var num = 123;function foo() &#123; console.log( num );&#125;foo(); 例子2：1234if ( false ) &#123; var num = 123;&#125;console.log( num ); // undefiend 例子3：1234567891011var num = 123;function foo() &#123; var num = 456; function func() &#123; console.log( num ); &#125; func();&#125;foo(); 练习：1234567891011121314var num1 = 123;function foo1() &#123; var num1 = 456; function foo2() &#123; num1 = 789; function foo3 () &#123; console.log( num1 ); &#125; foo3(); &#125; foo2();&#125;foo1();console.log( num1 );]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -151,9 +151,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[作用域]]></title>
-    <url>%2F2016%2F10%2F02%2F%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
-    <content type="text"><![CDATA[作用域域，表示的是一个范围，作用域，就是作用范围。 作用域说明的是一个变量可以在什么地方被使用，什么地方不能被使用。 块级作用域JavaScript中没有块级作用域 1234567&#123; var num = 123; &#123; console.log( num ); &#125;&#125;console.log( num ); 上面这段代码在JavaScript中是不会报错的，但是在其他的编程语言中（C#、C、JAVA）会报错。 这是因为，在JavaScript中没有块级作用域，使用{}标记出来的代码块中声明的变量num，是可以被{}外面访问到的。 但是在其他的编程语言中，有块级作用域，那么{}中声明的变量num，是不能在代码块外部访问的，所以报错。 词法作用域什么是词法作用域？ 词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域. 在 js 中词法作用域规则: 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字 例子1：123456789var num = 123;function foo() &#123; console.log( num );&#125;foo(); 例子2：1234if ( false ) &#123; var num = 123;&#125;console.log( num ); // undefiend 例子3：1234567891011var num = 123;function foo() &#123; var num = 456; function func() &#123; console.log( num ); &#125; func();&#125;foo(); 练习：1234567891011121314var num1 = 123;function foo1() &#123; var num1 = 456; function foo2() &#123; num1 = 789; function foo3 () &#123; console.log( num1 ); &#125; foo3(); &#125; foo2();&#125;foo1();console.log( num1 );]]></content>
+    <title><![CDATA[传统构造函数存在的问题]]></title>
+    <url>%2F2016%2F10%2F02%2F%E4%BC%A0%E7%BB%9F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[1. 发现问题现有构造函数如下： 1234567function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = function()&#123; console.log("你好"); &#125;&#125; 调用该构造函数创建对象，并对比创建出来的对象的sayHi方法：1234var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为false 由于每个对象都是由new Person创建出来的，因此每创建一个对象，函数sayHi都会被重新创建一次，这个时候，每个对象都拥有一个独立的，但是功能完全相同的方法。 功能相同的函数，完全没有必要再内存中存在这么多份。所以就造成了资源浪费。 2. 解决问题这里最好的办法就是将函数体放在构造函数之外. 在构造函数中只需要引用该函数即可。 1234567891011121314function sayHello()&#123; console.log("你好");&#125;function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = sayHello;&#125;//调用该构造函数创建对象，并对比创建出来的对象的sayHi方法var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为true 这样写依然存在问题： 全局变量增多，会增加引入框架命名冲突的风险 代码结构混乱，会变得难以维护]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -326,20 +326,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[继承]]></title>
-    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%2F</url>
-    <content type="text"><![CDATA[继承的概念在JavaScript中，继承就是当前对象可以使用其他对象的方法和属性。 12345678910111213141516var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;//当前有两个对象，一个animal,一个dog//dog没有属性和方法//但是我们知道，dog属于animal，所以animal的方法和属性，都可以被dog使用//如何让dog可以使用animal的属性和方法呢？//通过继承就可以实现]]></content>
-      <categories>
-        <category>学习资料</category>
-      </categories>
-      <tags>
-        <tag>js高级</tag>
-        <tag>JavaScript</tag>
-        <tag>对象</tag>
-        <tag>原型</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[继承的实现方式]]></title>
     <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[继承的实现方式在上一节内容中，最终的结论就是可以通过继承来让dog对象可以使用animal对象的属性和方法，那怎么实现继承呢？ 1. 最简单的继承实现直接遍历父对象的属性，将所有的属性加到当前对象上 1234567891011121314151617var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;for (var k in animal)&#123; dog[k]= animal[k];&#125; 2. 原型继承每一个构造函数都有prototype原型属性，通过构造函数创建出来的对象都继承自该原型属性。所以可以通过更改构造函数的原型属性来实现继承。 12345678910111213141516171819202122232425262728293031323334353637383940function Dog()&#123; this.type = "yellow Dog";&#125;function extend(obj1, obj2)&#123; for (var k in obj2)&#123; obj1[k] = obj2[k]; &#125;&#125;;//使用混入的方式，将属性和方法添加到构造函数的原型属性上，构造函数所创建出来的实例就都有了这些属性和方法。extend(Dog.prototype, &#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;)//使用面向对象的思想把extend方法重新封装//extend是扩展的意思，谁要扩展就主动调用extend这个方法//所以extend应该是对象的方法，那现在我们要扩展的是构造函数的原型对象//所以给构造函数的原型对象添加一个extend方法//如下：Dog.prototype.extend = function(obj)&#123; for (var k in obj)&#123; this[k]=obj[k]; &#125;&#125;//调用方式就变成了下面这种形式Dog.prototype.extend(&#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;);]]></content>
@@ -354,9 +340,23 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[递归]]></title>
-    <url>%2F2016%2F06%2F06%2F%E9%80%92%E5%BD%92%2F</url>
-    <content type="text"><![CDATA[什么是递归在程序中，所谓的递归，就是函数自己直接或间接的调用自己。调用自己分两种： 直接调用自己 间接调用自己 就递归而言最重要的就是跳出结构，因为跳出了才可以有结果. 化归思想化归思想：将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。 递归思想就是将一个问题转换为一个已解决的问题来实现 假如有一个函数f, 如果它是递归函数的话, 那么也就是说函数体内的问题还是转换为 f的形式. 123function f() &#123; ... f( ... ) ...&#125; 例子: 1, 2, 3, 4, 5, …, 100 求和 首先假定递归函数已经写好, 假设是foo. 即foo(100)就是求1到100的和 寻找递推关系. 就是n与n-1, 或n-2之间的关系:foo( n ) == n + foo( n - 1 ) 12var res = foo(100);var res = foo(99) + 100; 将递推结构转换为递归体 123function foo(n)&#123; return n + foo( n - 1 );&#125; 上面就是利用了化归思想： 将 求 100 转换为 求 99 将 求 99 转换为 求 98 … 将求 2 转换为 求 1 求 1 结果就是 1 即: foo( 1 ) 是 1 将临界条件加到递归体中(求1的结果为1) 1234function foo( n ) &#123; if ( n == 1 ) return 1; return n + foo( n - 1 );&#125; 练习: 求 1, 3, 5, 7, 9, … 第n项的结果与前n项和. 序号从0开始 先看求第n项 首先假定递归函数已经写好, 假设是fn. 那么第n项就是fn(n) 找递推关系:fn(n) == f(n-1) + 2 递归体 123function fn(n) &#123; return fn(n-1) + 2;&#125; 找临界条件 求 n -&gt; n-1 求 n-1 -&gt; n-2 … 求 1 -&gt; 0 求 第 0 项, 就是 1 加入临界条件 1234function fn( n ) &#123; if ( n == 0 ) return 1; return fn( n-1 ) + 2;&#125; 再看求前n项和 假设已完成, sum( n ) 就是前 n 项和 找递推关系: 前 n 项和 等于 第 n 项 + 前 n-1 项的和 递归体 123function sum( n ) &#123; return fn( n ) + sum( n - 1 );&#125; 找临界条件 n == 1结果为 1 加入临界条件 1234function sum( n ) &#123; if (n == 0) return 1; return fn(n) + sum(n - 1);&#125; 练习 2, 4, 6, 8, 10 第 n 项与 前 n 项和 解题方法和上一题一样。 练习 现有数列: 1, 1, 2, 4, 7, 11, 16, … 求 第 n 项, 求前 n 项和. 求第n项 假设已经得到结果 fn, fn( 10 ) 就是第 10 项 找递推关系 0, 1 =&gt; fn( 0 ) + 0 = fn( 1 ) 1, 2 =&gt; fn( 1 ) + 1 = fn( 2 ) 2, 3 =&gt; fn( 2 ) + 2 = fn( 3 ) … n-1, n =&gt; fn( n-1 ) + n - 1 = fn( n ) 递归体也就清楚了 临界条件是 n == 0 =&gt; 1 1234function fn( n ) &#123; if ( n == 0 ) return 1; return fn( n-1 ) + n - 1;&#125; 前n项和1234function sum( n ) &#123; if ( n == 0 ) return 1; return sum( n - 1 ) + fn( n );&#125; 练习 Fibonacci 数列: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, … 求其第 n 项. 递推关系:fn(n) == fn(n-1) + fn(n - 2) 1234function fib( n ) &#123; if ( n == 0 || n == 1 ) return 1; return fib( n - 1 ) + fib( n - 2 );&#125; 练习 阶乘：一个数字的阶乘表示的是从 1 开始 累乘到这个数字. 例如 3! 表示 1 2 3. 5! 就是 1 2 3 4 5. 规定 0 没有阶乘, 阶乘从1开始。 求n的阶乘 1234function foo ( n ) &#123; if ( n == 1 ) return 1; return foo( n - 1 ) * n;&#125; 练习 求幂 求幂就是求 某一个数 几次方 2*2 2 的 平方, 2 的 2 次方 求 n 的 m 次方 最终要得到一个函数 power( n, m ) n 的 m 次方就是 m 个 n 相乘 即 n 乘以 (m-1) 个 n 相乘 1234function power ( n, m ) &#123; if ( m == 1 ) return n; return power( n, m - 1 ) * n;&#125;]]></content>
+    <title><![CDATA[继承]]></title>
+    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%2F</url>
+    <content type="text"><![CDATA[继承的概念在JavaScript中，继承就是当前对象可以使用其他对象的方法和属性。 12345678910111213141516var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;//当前有两个对象，一个animal,一个dog//dog没有属性和方法//但是我们知道，dog属于animal，所以animal的方法和属性，都可以被dog使用//如何让dog可以使用animal的属性和方法呢？//通过继承就可以实现]]></content>
+      <categories>
+        <category>学习资料</category>
+      </categories>
+      <tags>
+        <tag>js高级</tag>
+        <tag>JavaScript</tag>
+        <tag>对象</tag>
+        <tag>原型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[闭包]]></title>
+    <url>%2F2016%2F06%2F06%2F%E9%97%AD%E5%8C%85%2F</url>
+    <content type="text"><![CDATA[闭包的概念闭包从字面意思理解就是闭合, 包起来. 简单的来说闭包就是,一个具有封闭的对外不公开的, 包裹结构, 或空间. 在JavaScript中函数可以构成闭包. 一般函数是一个代码结构的封闭结构, 即包裹的特性, 同时根据作用域规则, 只允许函数访问外部的数据, 外部无法访问函数内部的数据, 即封闭的对外不公开的特性. 因此说函数可以构成闭包. 闭包要解决什么问题？ 闭包内的数据不允许外界访问 要解决的问题就是间接访问该数据 函数就可以构成闭包, 要解决的问题就是访问到函数内部的数据 我们观察下面的函数foo，在foo内部有一个变量num，能否在函数外部访问到这个变量num呢？ 1234567function foo () &#123; var num = 123; return num;&#125;var res = foo();console.log( res ); // =&gt; 123 分析： 在上面的代码中，确实可以访问到num这个函数内部的变量。但是能不能多次访问呢？ 不能，因为每次访问都得重新调用一次foo函数，每次调用都会重新创建一个num = 123，然后返回。 解决思路函数内的数据不能直接在函数外被访问，是因为作用域的关系，上级作用域不能直接访问下级作用域中的数据。 但是如果反过来，下级作用域可以直接访问上级作用域中的数据。那么如果在函数foo内定义一个函数，那么在这个内部函数中是可以直接访问foo中的num的。 12345678910111213function foo() &#123; var num = Math.random(); function func() &#123; return num; &#125; return func;&#125;var f = foo();// f可以直接访问num，而且多次访问，访问的也是同一个，并不会返回新的numvar res1 = f();var res2 = f(); 如何获得超过一个数据函数的返回值只能有一个，那按照上面的方法，我们只能对函数内部的一个数据进行操作。怎么操作函数内的多个数据呢？ 可以使用对象，代码如下：12345678910111213function foo () &#123; var num1 = Math.random(); var num2 = Math.random(); //可以将多个函数包含在一个对象内进行返回，这样就能在函数外部操作当前函数内的多个变量 return &#123; num1: function () &#123; return num1; &#125;, num2: function () &#123; return num2; &#125; &#125;&#125; 如何完成读取一个数据和修改这个数据前面讲的都是如何去获取函数内部的数据，接下来我们考虑如何修改函数内部的数据。 同样，也是使用内部的函数进行操作。 1234567891011121314function foo() &#123; var num = Math.random(); //分别定义get和set函数，使用对象进行返回 return &#123; //get_num负责获取数据 get_num: function() &#123; return num; &#125;, //set_num负责设置数据 set_num: function(value) &#123; num = value; &#125; &#125;&#125; 闭包的基本结构一般闭包要解决的的问题就是要想办法间接的获得函数内数据的使用权. 那么我们的可以总结出一个基本的使用模型. 写一个函数, 函数内定义一个新函数, 返回新函数, 用新函数获得函数内的数据 写一个函数, 函数内定义一个对象, 对象中绑定多个函数( 方法 ), 返回对象, 利用对象的方法访问函数内的数据]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -367,9 +367,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[闭包]]></title>
-    <url>%2F2016%2F06%2F06%2F%E9%97%AD%E5%8C%85%2F</url>
-    <content type="text"><![CDATA[闭包的概念闭包从字面意思理解就是闭合, 包起来. 简单的来说闭包就是,一个具有封闭的对外不公开的, 包裹结构, 或空间. 在JavaScript中函数可以构成闭包. 一般函数是一个代码结构的封闭结构, 即包裹的特性, 同时根据作用域规则, 只允许函数访问外部的数据, 外部无法访问函数内部的数据, 即封闭的对外不公开的特性. 因此说函数可以构成闭包. 闭包要解决什么问题？ 闭包内的数据不允许外界访问 要解决的问题就是间接访问该数据 函数就可以构成闭包, 要解决的问题就是访问到函数内部的数据 我们观察下面的函数foo，在foo内部有一个变量num，能否在函数外部访问到这个变量num呢？ 1234567function foo () &#123; var num = 123; return num;&#125;var res = foo();console.log( res ); // =&gt; 123 分析： 在上面的代码中，确实可以访问到num这个函数内部的变量。但是能不能多次访问呢？ 不能，因为每次访问都得重新调用一次foo函数，每次调用都会重新创建一个num = 123，然后返回。 解决思路函数内的数据不能直接在函数外被访问，是因为作用域的关系，上级作用域不能直接访问下级作用域中的数据。 但是如果反过来，下级作用域可以直接访问上级作用域中的数据。那么如果在函数foo内定义一个函数，那么在这个内部函数中是可以直接访问foo中的num的。 12345678910111213function foo() &#123; var num = Math.random(); function func() &#123; return num; &#125; return func;&#125;var f = foo();// f可以直接访问num，而且多次访问，访问的也是同一个，并不会返回新的numvar res1 = f();var res2 = f(); 如何获得超过一个数据函数的返回值只能有一个，那按照上面的方法，我们只能对函数内部的一个数据进行操作。怎么操作函数内的多个数据呢？ 可以使用对象，代码如下：12345678910111213function foo () &#123; var num1 = Math.random(); var num2 = Math.random(); //可以将多个函数包含在一个对象内进行返回，这样就能在函数外部操作当前函数内的多个变量 return &#123; num1: function () &#123; return num1; &#125;, num2: function () &#123; return num2; &#125; &#125;&#125; 如何完成读取一个数据和修改这个数据前面讲的都是如何去获取函数内部的数据，接下来我们考虑如何修改函数内部的数据。 同样，也是使用内部的函数进行操作。 1234567891011121314function foo() &#123; var num = Math.random(); //分别定义get和set函数，使用对象进行返回 return &#123; //get_num负责获取数据 get_num: function() &#123; return num; &#125;, //set_num负责设置数据 set_num: function(value) &#123; num = value; &#125; &#125;&#125; 闭包的基本结构一般闭包要解决的的问题就是要想办法间接的获得函数内数据的使用权. 那么我们的可以总结出一个基本的使用模型. 写一个函数, 函数内定义一个新函数, 返回新函数, 用新函数获得函数内的数据 写一个函数, 函数内定义一个对象, 对象中绑定多个函数( 方法 ), 返回对象, 利用对象的方法访问函数内的数据]]></content>
+    <title><![CDATA[递归]]></title>
+    <url>%2F2016%2F06%2F06%2F%E9%80%92%E5%BD%92%2F</url>
+    <content type="text"><![CDATA[什么是递归在程序中，所谓的递归，就是函数自己直接或间接的调用自己。调用自己分两种： 直接调用自己 间接调用自己 就递归而言最重要的就是跳出结构，因为跳出了才可以有结果. 化归思想化归思想：将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。 递归思想就是将一个问题转换为一个已解决的问题来实现 假如有一个函数f, 如果它是递归函数的话, 那么也就是说函数体内的问题还是转换为 f的形式. 123function f() &#123; ... f( ... ) ...&#125; 例子: 1, 2, 3, 4, 5, …, 100 求和 首先假定递归函数已经写好, 假设是foo. 即foo(100)就是求1到100的和 寻找递推关系. 就是n与n-1, 或n-2之间的关系:foo( n ) == n + foo( n - 1 ) 12var res = foo(100);var res = foo(99) + 100; 将递推结构转换为递归体 123function foo(n)&#123; return n + foo( n - 1 );&#125; 上面就是利用了化归思想： 将 求 100 转换为 求 99 将 求 99 转换为 求 98 … 将求 2 转换为 求 1 求 1 结果就是 1 即: foo( 1 ) 是 1 将临界条件加到递归体中(求1的结果为1) 1234function foo( n ) &#123; if ( n == 1 ) return 1; return n + foo( n - 1 );&#125; 练习: 求 1, 3, 5, 7, 9, … 第n项的结果与前n项和. 序号从0开始 先看求第n项 首先假定递归函数已经写好, 假设是fn. 那么第n项就是fn(n) 找递推关系:fn(n) == f(n-1) + 2 递归体 123function fn(n) &#123; return fn(n-1) + 2;&#125; 找临界条件 求 n -&gt; n-1 求 n-1 -&gt; n-2 … 求 1 -&gt; 0 求 第 0 项, 就是 1 加入临界条件 1234function fn( n ) &#123; if ( n == 0 ) return 1; return fn( n-1 ) + 2;&#125; 再看求前n项和 假设已完成, sum( n ) 就是前 n 项和 找递推关系: 前 n 项和 等于 第 n 项 + 前 n-1 项的和 递归体 123function sum( n ) &#123; return fn( n ) + sum( n - 1 );&#125; 找临界条件 n == 1结果为 1 加入临界条件 1234function sum( n ) &#123; if (n == 0) return 1; return fn(n) + sum(n - 1);&#125; 练习 2, 4, 6, 8, 10 第 n 项与 前 n 项和 解题方法和上一题一样。 练习 现有数列: 1, 1, 2, 4, 7, 11, 16, … 求 第 n 项, 求前 n 项和. 求第n项 假设已经得到结果 fn, fn( 10 ) 就是第 10 项 找递推关系 0, 1 =&gt; fn( 0 ) + 0 = fn( 1 ) 1, 2 =&gt; fn( 1 ) + 1 = fn( 2 ) 2, 3 =&gt; fn( 2 ) + 2 = fn( 3 ) … n-1, n =&gt; fn( n-1 ) + n - 1 = fn( n ) 递归体也就清楚了 临界条件是 n == 0 =&gt; 1 1234function fn( n ) &#123; if ( n == 0 ) return 1; return fn( n-1 ) + n - 1;&#125; 前n项和1234function sum( n ) &#123; if ( n == 0 ) return 1; return sum( n - 1 ) + fn( n );&#125; 练习 Fibonacci 数列: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, … 求其第 n 项. 递推关系:fn(n) == fn(n-1) + fn(n - 2) 1234function fib( n ) &#123; if ( n == 0 || n == 1 ) return 1; return fib( n - 1 ) + fib( n - 2 );&#125; 练习 阶乘：一个数字的阶乘表示的是从 1 开始 累乘到这个数字. 例如 3! 表示 1 2 3. 5! 就是 1 2 3 4 5. 规定 0 没有阶乘, 阶乘从1开始。 求n的阶乘 1234function foo ( n ) &#123; if ( n == 1 ) return 1; return foo( n - 1 ) * n;&#125; 练习 求幂 求幂就是求 某一个数 几次方 2*2 2 的 平方, 2 的 2 次方 求 n 的 m 次方 最终要得到一个函数 power( n, m ) n 的 m 次方就是 m 个 n 相乘 即 n 乘以 (m-1) 个 n 相乘 1234function power ( n, m ) &#123; if ( m == 1 ) return n; return power( n, m - 1 ) * n;&#125;]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -478,8 +478,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>markDown</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -503,8 +503,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>MARKDOWN</tag>
         <tag>工具</tag>
+        <tag>MARKDOWN</tag>
       </tags>
   </entry>
   <entry>
@@ -520,9 +520,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
+    <title><![CDATA[值类型和引用类型的特征]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
+    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -532,9 +532,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型的特征]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
-    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
+    <title><![CDATA[值类型和引用类型]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -568,17 +568,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[调试工具的使用]]></title>
-    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据类型]]></title>
     <url>%2F2015%2F06%2F07%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
     <content type="text"><![CDATA[JavaScript数据类型JavaScript中的数据类型分为两种：基本数据类型和复杂数据类型。 基本数据类型 number string boolean undefined null 复杂数据类型 object 如何判断一个变量的数据类型typeof关键字，可以用来返回变量对应的数据类型。]]></content>
@@ -588,6 +577,17 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>js基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[调试工具的使用]]></title>
+    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
 </search>

@@ -1893,7 +1893,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/11/值类型和引用类型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/11/值类型和引用类型的特征/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hurmuri">
@@ -1912,7 +1912,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/07/11/值类型和引用类型/" itemprop="url">值类型和引用类型</a></h1>
+                <a class="post-title-link" href="/2015/07/11/值类型和引用类型的特征/" itemprop="url">值类型和引用类型的特征</a></h1>
         
 
         <div class="post-meta">
@@ -1965,9 +1965,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/07/11/值类型和引用类型/#comments" itemprop="discussionUrl">
+                <a href="/2015/07/11/值类型和引用类型的特征/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/07/11/值类型和引用类型/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/07/11/值类型和引用类型的特征/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1993,20 +1993,16 @@
 
       
         
-          <h1 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h1><h2 id="1-值类型-基本数据类型"><a href="#1-值类型-基本数据类型" class="headerlink" title="1.值类型(基本数据类型)"></a>1.值类型(基本数据类型)</h2><ul>
-<li><code>数值类型</code></li>
-<li><code>布尔类型</code></li>
-<li><code>undefined</code></li>
-<li><code>null</code></li>
-<li><code>字符串</code></li>
-</ul>
-<p>值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> str = <span class="string">"hello JS"</span>;</div><div class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;</div><div class="line"><span class="keyword">var</span> un = <span class="literal">undefined</span>;</div><div class="line"><span class="keyword">var</span> nu = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
-<p><strong><em>上面定义的这些值类型的数据在内存中的存储如下</em></strong></p>
-<p><img src="/images/01-2.png" alt=""><br>
+          <h2 id="1-值类型和引用类型的赋值"><a href="#1-值类型和引用类型的赋值" class="headerlink" title="1. 值类型和引用类型的赋值"></a>1. 值类型和引用类型的赋值</h2><h3 id="1-1-值类型赋值，直接将值复制一份"><a href="#1-1-值类型赋值，直接将值复制一份" class="headerlink" title="1.1. 值类型赋值，直接将值复制一份"></a>1.1. 值类型赋值，直接将值复制一份</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> num2 = num1;</div></pre></td></tr></table></figure>
+<p>上面两句代码，在内存中的体现为：</p>
+<p><img src="/images/02-4.png" alt=""></p>
+<ul>
+<li><code>var num1 = 10;</code>表示变量num1存储的是数字<code>10</code></li>
+<li>将数据拷贝一份，也就是将<code>10</code>拷贝一份，这个时候内存中有两个<code>10</code></li>
+<li>将拷贝的<code>10</code>赋值给<code>num2</code>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/07/11/值类型和引用类型/<i class='fa fa-tag'></i>more" rel="contents">
+            <a class="btn" href="/2015/07/11/值类型和引用类型的特征/<i class='fa fa-tag'></i>more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
