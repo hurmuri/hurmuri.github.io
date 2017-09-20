@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[鼠标滚轮事件兼容写法]]></title>
+    <url>%2F2017%2F09%2F20%2F%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[鼠标滚轮兼容写法：12345678910111213141516171819202122232425262728293031323334353637383940414243//鼠标滚轮兼容写法var addMouseWheelHandler = function()&#123; if (document.addEventListener) &#123; document.addEventListener('mousewheel', MouseWheelHandler, false); //IE9, Chrome, Safari, Oper document.addEventListener('wheel', MouseWheelHandler, false); //Firefox document.addEventListener('DOMMouseScroll', MouseWheelHandler, false); //Old Firefox &#125; else &#123; document.attachEvent('onmousewheel', MouseWheelHandler); //IE 6/7/8 &#125; &#125;, removeMouseWheelHandler = function()&#123; if (document.addEventListener) &#123; document.removeEventListener('mousewheel', MouseWheelHandler, false); //IE9, Chrome, Safari, Oper document.removeEventListener('wheel', MouseWheelHandler, false); //Firefox document.removeEventListener('DOMMouseScroll', MouseWheelHandler, false); //old Firefox &#125; else &#123; document.detachEvent('onmousewheel', MouseWheelHandler); //IE 6/7/8 &#125; &#125;, stopDefault = function(e) &#123; //W3C if ( e &amp;&amp; e.preventDefault ) e.preventDefault(); //IE else window.event.returnValue = false; return false; &#125;, MouseWheelHandler = function(e) &#123;//滚动后的处理函数 stopDefault(e); var e = e || window.event, value = e.wheelDelta || -e.deltaY || -e.detail, delta = Math.max(-1, Math.min(1, value)); if (delta &lt; 0) &#123;//scrolling down console.log("下滑") &#125;else &#123;//scrolling up console.log("上滑") &#125; &#125;; //调用 addMouseWheelHandler();]]></content>
+      <categories>
+        <category>学习资料</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>代码段</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数组去重+排序]]></title>
     <url>%2F2017%2F09%2F12%2F%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%2B%E6%8E%92%E5%BA%8F%2F</url>
     <content type="text"><![CDATA[方案一（仅去重）：123456var rusultArr=newArr.reduce(function(rusultArr,a)&#123; if(rusultArr.indexOf(a)==-1)&#123; rusultArr.push(a) &#125;return rusultArr&#125;,[]) 方案二（去重加排序）：1rusultArr=Array.from(new Set(newArr)).sort(function(a,b)&#123;return a-b&#125;)]]></content>
@@ -138,9 +150,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[传统构造函数存在的问题]]></title>
-    <url>%2F2016%2F10%2F02%2F%E4%BC%A0%E7%BB%9F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[1. 发现问题现有构造函数如下： 1234567function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = function()&#123; console.log("你好"); &#125;&#125; 调用该构造函数创建对象，并对比创建出来的对象的sayHi方法：1234var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为false 由于每个对象都是由new Person创建出来的，因此每创建一个对象，函数sayHi都会被重新创建一次，这个时候，每个对象都拥有一个独立的，但是功能完全相同的方法。 功能相同的函数，完全没有必要再内存中存在这么多份。所以就造成了资源浪费。 2. 解决问题这里最好的办法就是将函数体放在构造函数之外. 在构造函数中只需要引用该函数即可。 1234567891011121314function sayHello()&#123; console.log("你好");&#125;function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = sayHello;&#125;//调用该构造函数创建对象，并对比创建出来的对象的sayHi方法var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为true 这样写依然存在问题： 全局变量增多，会增加引入框架命名冲突的风险 代码结构混乱，会变得难以维护]]></content>
+    <title><![CDATA[作用域]]></title>
+    <url>%2F2016%2F10%2F02%2F%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
+    <content type="text"><![CDATA[作用域域，表示的是一个范围，作用域，就是作用范围。 作用域说明的是一个变量可以在什么地方被使用，什么地方不能被使用。 块级作用域JavaScript中没有块级作用域 1234567&#123; var num = 123; &#123; console.log( num ); &#125;&#125;console.log( num ); 上面这段代码在JavaScript中是不会报错的，但是在其他的编程语言中（C#、C、JAVA）会报错。 这是因为，在JavaScript中没有块级作用域，使用{}标记出来的代码块中声明的变量num，是可以被{}外面访问到的。 但是在其他的编程语言中，有块级作用域，那么{}中声明的变量num，是不能在代码块外部访问的，所以报错。 词法作用域什么是词法作用域？ 词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域. 在 js 中词法作用域规则: 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字 例子1：123456789var num = 123;function foo() &#123; console.log( num );&#125;foo(); 例子2：1234if ( false ) &#123; var num = 123;&#125;console.log( num ); // undefiend 例子3：1234567891011var num = 123;function foo() &#123; var num = 456; function func() &#123; console.log( num ); &#125; func();&#125;foo(); 练习：1234567891011121314var num1 = 123;function foo1() &#123; var num1 = 456; function foo2() &#123; num1 = 789; function foo3 () &#123; console.log( num1 ); &#125; foo3(); &#125; foo2();&#125;foo1();console.log( num1 );]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -151,9 +163,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[作用域]]></title>
-    <url>%2F2016%2F10%2F02%2F%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
-    <content type="text"><![CDATA[作用域域，表示的是一个范围，作用域，就是作用范围。 作用域说明的是一个变量可以在什么地方被使用，什么地方不能被使用。 块级作用域JavaScript中没有块级作用域 1234567&#123; var num = 123; &#123; console.log( num ); &#125;&#125;console.log( num ); 上面这段代码在JavaScript中是不会报错的，但是在其他的编程语言中（C#、C、JAVA）会报错。 这是因为，在JavaScript中没有块级作用域，使用{}标记出来的代码块中声明的变量num，是可以被{}外面访问到的。 但是在其他的编程语言中，有块级作用域，那么{}中声明的变量num，是不能在代码块外部访问的，所以报错。 词法作用域什么是词法作用域？ 词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域. 在 js 中词法作用域规则: 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字 例子1：123456789var num = 123;function foo() &#123; console.log( num );&#125;foo(); 例子2：1234if ( false ) &#123; var num = 123;&#125;console.log( num ); // undefiend 例子3：1234567891011var num = 123;function foo() &#123; var num = 456; function func() &#123; console.log( num ); &#125; func();&#125;foo(); 练习：1234567891011121314var num1 = 123;function foo1() &#123; var num1 = 456; function foo2() &#123; num1 = 789; function foo3 () &#123; console.log( num1 ); &#125; foo3(); &#125; foo2();&#125;foo1();console.log( num1 );]]></content>
+    <title><![CDATA[传统构造函数存在的问题]]></title>
+    <url>%2F2016%2F10%2F02%2F%E4%BC%A0%E7%BB%9F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[1. 发现问题现有构造函数如下： 1234567function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = function()&#123; console.log("你好"); &#125;&#125; 调用该构造函数创建对象，并对比创建出来的对象的sayHi方法：1234var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为false 由于每个对象都是由new Person创建出来的，因此每创建一个对象，函数sayHi都会被重新创建一次，这个时候，每个对象都拥有一个独立的，但是功能完全相同的方法。 功能相同的函数，完全没有必要再内存中存在这么多份。所以就造成了资源浪费。 2. 解决问题这里最好的办法就是将函数体放在构造函数之外. 在构造函数中只需要引用该函数即可。 1234567891011121314function sayHello()&#123; console.log("你好");&#125;function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = sayHello;&#125;//调用该构造函数创建对象，并对比创建出来的对象的sayHi方法var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为true 这样写依然存在问题： 全局变量增多，会增加引入框架命名冲突的风险 代码结构混乱，会变得难以维护]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -520,9 +532,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型的特征]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
-    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
+    <title><![CDATA[值类型和引用类型]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -532,9 +544,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
+    <title><![CDATA[值类型和引用类型的特征]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
+    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -568,6 +580,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[调试工具的使用]]></title>
+    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据类型]]></title>
     <url>%2F2015%2F06%2F07%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
     <content type="text"><![CDATA[JavaScript数据类型JavaScript中的数据类型分为两种：基本数据类型和复杂数据类型。 基本数据类型 number string boolean undefined null 复杂数据类型 object 如何判断一个变量的数据类型typeof关键字，可以用来返回变量对应的数据类型。]]></content>
@@ -577,17 +600,6 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>js基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[调试工具的使用]]></title>
-    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
 </search>
