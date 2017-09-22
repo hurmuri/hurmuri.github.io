@@ -13,6 +13,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[货币格式化函数]]></title>
+    <url>%2F2017%2F09%2F22%2Fdemo%2F</url>
+    <content type="text"><![CDATA[1111111保留两位小数12345678910111213141516//货币格式化 function formatCurrency(num) &#123; num = num.toString().replace(/\$|\,/g, '') if (isNaN(num)) num = "0" sign = (num == (num = Math.abs(num))) num = Math.floor(num * 100 + 0.50000000001) cents = num % 100 num = Math.floor(num / 100).toString() if (cents &lt; 10) cents = "0" + cents for (var i = 0; i &lt; Math.floor((num.length - (1 + i)) / 3); i++) num = num.substring(0, num.length - (4 * i + 3)) + ',' + num.substring(num.length - (4 * i + 3)) return (((sign) ? '' : '-') + num + '.' + cents) &#125; 保留一位小数1234567891011121314 //货币格式化 function formatCurrencyTenThou(num) &#123; num = num.toString().replace(/\$|\,/g,''); if(isNaN(num)) num = "0"; sign = (num == (num = Math.abs(num))); num = Math.floor(num*10+0.50000000001); cents = num%10; num = Math.floor(num/10).toString(); for (var i = 0; i &lt; Math.floor((num.length-(1+i))/3); i++) num = num.substring(0,num.length-(4*i+3))+','+ num.substring(num.length-(4*i+3)); return (((sign)?'':'-') + num + '.' + cents);&#125; 不保留小数123456function formatPrice(n) &#123; var t = parseInt(n), i, r; for (t = t.toString().replace(/^(\d*)$/, "$1."), t = (t + "00").replace(/(\d*\.\d\d)\d*/, "$1"), t = t.replace(".", ","), i = /(\d)(\d&#123;3&#125;,)/; i.test(t); ) t = t.replace(i, "$1,$2"); return t = t.replace(/,(\d\d)$/, ".$1"), r = t.split("."), r[1] == "00" &amp;&amp; (t = r[0]), t &#125;]]></content>
+      <categories>
+        <category>学习资料</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>技巧</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[鼠标滚轮事件兼容写法]]></title>
     <url>%2F2017%2F09%2F20%2F%E9%BC%A0%E6%A0%87%E6%BB%9A%E8%BD%AE%E4%BA%8B%E4%BB%B6%E5%85%BC%E5%AE%B9%E5%86%99%E6%B3%95%2F</url>
     <content type="text"><![CDATA[鼠标滚轮兼容写法：12345678910111213141516171819202122232425262728293031323334353637383940414243//鼠标滚轮兼容写法var addMouseWheelHandler = function()&#123; if (document.addEventListener) &#123; document.addEventListener('mousewheel', MouseWheelHandler, false); //IE9, Chrome, Safari, Oper document.addEventListener('wheel', MouseWheelHandler, false); //Firefox document.addEventListener('DOMMouseScroll', MouseWheelHandler, false); //Old Firefox &#125; else &#123; document.attachEvent('onmousewheel', MouseWheelHandler); //IE 6/7/8 &#125; &#125;, removeMouseWheelHandler = function()&#123; if (document.addEventListener) &#123; document.removeEventListener('mousewheel', MouseWheelHandler, false); //IE9, Chrome, Safari, Oper document.removeEventListener('wheel', MouseWheelHandler, false); //Firefox document.removeEventListener('DOMMouseScroll', MouseWheelHandler, false); //old Firefox &#125; else &#123; document.detachEvent('onmousewheel', MouseWheelHandler); //IE 6/7/8 &#125; &#125;, stopDefault = function(e) &#123; //W3C if ( e &amp;&amp; e.preventDefault ) e.preventDefault(); //IE else window.event.returnValue = false; return false; &#125;, MouseWheelHandler = function(e) &#123;//滚动后的处理函数 stopDefault(e); var e = e || window.event, value = e.wheelDelta || -e.deltaY || -e.detail, delta = Math.max(-1, Math.min(1, value)); if (delta &lt; 0) &#123;//scrolling down console.log("下滑") &#125;else &#123;//scrolling up console.log("上滑") &#125; &#125;; //调用 addMouseWheelHandler();]]></content>
@@ -45,8 +57,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -59,8 +71,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -73,8 +85,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -87,8 +99,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -101,8 +113,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -115,8 +127,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -129,8 +141,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -143,8 +155,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -156,9 +168,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
         <tag>函数</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -169,9 +181,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
         <tag>函数</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -182,9 +194,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
         <tag>函数</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -195,9 +207,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
         <tag>函数</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -208,9 +220,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
         <tag>函数</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -221,9 +233,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
         <tag>函数</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -234,9 +246,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
         <tag>函数</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -247,9 +259,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
         <tag>函数</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -260,9 +272,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
         <tag>函数</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -274,8 +286,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -288,8 +300,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -302,8 +314,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -316,8 +328,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -330,8 +342,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -344,8 +356,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -358,8 +370,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -372,22 +384,9 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>原型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[递归]]></title>
-    <url>%2F2016%2F06%2F06%2F%E9%80%92%E5%BD%92%2F</url>
-    <content type="text"><![CDATA[什么是递归在程序中，所谓的递归，就是函数自己直接或间接的调用自己。调用自己分两种： 直接调用自己 间接调用自己 就递归而言最重要的就是跳出结构，因为跳出了才可以有结果. 化归思想化归思想：将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。 递归思想就是将一个问题转换为一个已解决的问题来实现 假如有一个函数f, 如果它是递归函数的话, 那么也就是说函数体内的问题还是转换为 f的形式. 123function f() &#123; ... f( ... ) ...&#125; 例子: 1, 2, 3, 4, 5, …, 100 求和 首先假定递归函数已经写好, 假设是foo. 即foo(100)就是求1到100的和 寻找递推关系. 就是n与n-1, 或n-2之间的关系:foo( n ) == n + foo( n - 1 ) 12var res = foo(100);var res = foo(99) + 100; 将递推结构转换为递归体 123function foo(n)&#123; return n + foo( n - 1 );&#125; 上面就是利用了化归思想： 将 求 100 转换为 求 99 将 求 99 转换为 求 98 … 将求 2 转换为 求 1 求 1 结果就是 1 即: foo( 1 ) 是 1 将临界条件加到递归体中(求1的结果为1) 1234function foo( n ) &#123; if ( n == 1 ) return 1; return n + foo( n - 1 );&#125; 练习: 求 1, 3, 5, 7, 9, … 第n项的结果与前n项和. 序号从0开始 先看求第n项 首先假定递归函数已经写好, 假设是fn. 那么第n项就是fn(n) 找递推关系:fn(n) == f(n-1) + 2 递归体 123function fn(n) &#123; return fn(n-1) + 2;&#125; 找临界条件 求 n -&gt; n-1 求 n-1 -&gt; n-2 … 求 1 -&gt; 0 求 第 0 项, 就是 1 加入临界条件 1234function fn( n ) &#123; if ( n == 0 ) return 1; return fn( n-1 ) + 2;&#125; 再看求前n项和 假设已完成, sum( n ) 就是前 n 项和 找递推关系: 前 n 项和 等于 第 n 项 + 前 n-1 项的和 递归体 123function sum( n ) &#123; return fn( n ) + sum( n - 1 );&#125; 找临界条件 n == 1结果为 1 加入临界条件 1234function sum( n ) &#123; if (n == 0) return 1; return fn(n) + sum(n - 1);&#125; 练习 2, 4, 6, 8, 10 第 n 项与 前 n 项和 解题方法和上一题一样。 练习 现有数列: 1, 1, 2, 4, 7, 11, 16, … 求 第 n 项, 求前 n 项和. 求第n项 假设已经得到结果 fn, fn( 10 ) 就是第 10 项 找递推关系 0, 1 =&gt; fn( 0 ) + 0 = fn( 1 ) 1, 2 =&gt; fn( 1 ) + 1 = fn( 2 ) 2, 3 =&gt; fn( 2 ) + 2 = fn( 3 ) … n-1, n =&gt; fn( n-1 ) + n - 1 = fn( n ) 递归体也就清楚了 临界条件是 n == 0 =&gt; 1 1234function fn( n ) &#123; if ( n == 0 ) return 1; return fn( n-1 ) + n - 1;&#125; 前n项和1234function sum( n ) &#123; if ( n == 0 ) return 1; return sum( n - 1 ) + fn( n );&#125; 练习 Fibonacci 数列: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, … 求其第 n 项. 递推关系:fn(n) == fn(n-1) + fn(n - 2) 1234function fib( n ) &#123; if ( n == 0 || n == 1 ) return 1; return fib( n - 1 ) + fib( n - 2 );&#125; 练习 阶乘：一个数字的阶乘表示的是从 1 开始 累乘到这个数字. 例如 3! 表示 1 2 3. 5! 就是 1 2 3 4 5. 规定 0 没有阶乘, 阶乘从1开始。 求n的阶乘 1234function foo ( n ) &#123; if ( n == 1 ) return 1; return foo( n - 1 ) * n;&#125; 练习 求幂 求幂就是求 某一个数 几次方 2*2 2 的 平方, 2 的 2 次方 求 n 的 m 次方 最终要得到一个函数 power( n, m ) n 的 m 次方就是 m 个 n 相乘 即 n 乘以 (m-1) 个 n 相乘 1234function power ( n, m ) &#123; if ( m == 1 ) return n; return power( n, m - 1 ) * n;&#125;]]></content>
-      <categories>
-        <category>学习资料</category>
-      </categories>
-      <tags>
-        <tag>对象</tag>
-        <tag>js高级</tag>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -399,8 +398,21 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[递归]]></title>
+    <url>%2F2016%2F06%2F06%2F%E9%80%92%E5%BD%92%2F</url>
+    <content type="text"><![CDATA[什么是递归在程序中，所谓的递归，就是函数自己直接或间接的调用自己。调用自己分两种： 直接调用自己 间接调用自己 就递归而言最重要的就是跳出结构，因为跳出了才可以有结果. 化归思想化归思想：将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。 递归思想就是将一个问题转换为一个已解决的问题来实现 假如有一个函数f, 如果它是递归函数的话, 那么也就是说函数体内的问题还是转换为 f的形式. 123function f() &#123; ... f( ... ) ...&#125; 例子: 1, 2, 3, 4, 5, …, 100 求和 首先假定递归函数已经写好, 假设是foo. 即foo(100)就是求1到100的和 寻找递推关系. 就是n与n-1, 或n-2之间的关系:foo( n ) == n + foo( n - 1 ) 12var res = foo(100);var res = foo(99) + 100; 将递推结构转换为递归体 123function foo(n)&#123; return n + foo( n - 1 );&#125; 上面就是利用了化归思想： 将 求 100 转换为 求 99 将 求 99 转换为 求 98 … 将求 2 转换为 求 1 求 1 结果就是 1 即: foo( 1 ) 是 1 将临界条件加到递归体中(求1的结果为1) 1234function foo( n ) &#123; if ( n == 1 ) return 1; return n + foo( n - 1 );&#125; 练习: 求 1, 3, 5, 7, 9, … 第n项的结果与前n项和. 序号从0开始 先看求第n项 首先假定递归函数已经写好, 假设是fn. 那么第n项就是fn(n) 找递推关系:fn(n) == f(n-1) + 2 递归体 123function fn(n) &#123; return fn(n-1) + 2;&#125; 找临界条件 求 n -&gt; n-1 求 n-1 -&gt; n-2 … 求 1 -&gt; 0 求 第 0 项, 就是 1 加入临界条件 1234function fn( n ) &#123; if ( n == 0 ) return 1; return fn( n-1 ) + 2;&#125; 再看求前n项和 假设已完成, sum( n ) 就是前 n 项和 找递推关系: 前 n 项和 等于 第 n 项 + 前 n-1 项的和 递归体 123function sum( n ) &#123; return fn( n ) + sum( n - 1 );&#125; 找临界条件 n == 1结果为 1 加入临界条件 1234function sum( n ) &#123; if (n == 0) return 1; return fn(n) + sum(n - 1);&#125; 练习 2, 4, 6, 8, 10 第 n 项与 前 n 项和 解题方法和上一题一样。 练习 现有数列: 1, 1, 2, 4, 7, 11, 16, … 求 第 n 项, 求前 n 项和. 求第n项 假设已经得到结果 fn, fn( 10 ) 就是第 10 项 找递推关系 0, 1 =&gt; fn( 0 ) + 0 = fn( 1 ) 1, 2 =&gt; fn( 1 ) + 1 = fn( 2 ) 2, 3 =&gt; fn( 2 ) + 2 = fn( 3 ) … n-1, n =&gt; fn( n-1 ) + n - 1 = fn( n ) 递归体也就清楚了 临界条件是 n == 0 =&gt; 1 1234function fn( n ) &#123; if ( n == 0 ) return 1; return fn( n-1 ) + n - 1;&#125; 前n项和1234function sum( n ) &#123; if ( n == 0 ) return 1; return sum( n - 1 ) + fn( n );&#125; 练习 Fibonacci 数列: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, … 求其第 n 项. 递推关系:fn(n) == fn(n-1) + fn(n - 2) 1234function fib( n ) &#123; if ( n == 0 || n == 1 ) return 1; return fib( n - 1 ) + fib( n - 2 );&#125; 练习 阶乘：一个数字的阶乘表示的是从 1 开始 累乘到这个数字. 例如 3! 表示 1 2 3. 5! 就是 1 2 3 4 5. 规定 0 没有阶乘, 阶乘从1开始。 求n的阶乘 1234function foo ( n ) &#123; if ( n == 1 ) return 1; return foo( n - 1 ) * n;&#125; 练习 求幂 求幂就是求 某一个数 几次方 2*2 2 的 平方, 2 的 2 次方 求 n 的 m 次方 最终要得到一个函数 power( n, m ) n 的 m 次方就是 m 个 n 相乘 即 n 乘以 (m-1) 个 n 相乘 1234function power ( n, m ) &#123; if ( m == 1 ) return n; return power( n, m - 1 ) * n;&#125;]]></content>
+      <categories>
+        <category>学习资料</category>
+      </categories>
+      <tags>
+        <tag>对象</tag>
+        <tag>JavaScript</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -412,8 +424,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -437,8 +449,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -450,8 +462,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -464,8 +476,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -477,8 +489,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -490,8 +502,8 @@
       </categories>
       <tags>
         <tag>对象</tag>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
       </tags>
   </entry>
   <entry>
@@ -502,8 +514,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>markDown</tag>
         <tag>工具</tag>
+        <tag>markDown</tag>
       </tags>
   </entry>
   <entry>
@@ -514,8 +526,8 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>js高级</tag>
         <tag>AJAX</tag>
       </tags>
   </entry>
@@ -527,8 +539,8 @@
         <category>工具</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>MARKDOWN</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
@@ -544,9 +556,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型的特征]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
-    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
+    <title><![CDATA[值类型和引用类型]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -556,9 +568,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
+    <title><![CDATA[值类型和引用类型的特征]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
+    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -592,17 +604,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[调试工具的使用]]></title>
-    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据类型]]></title>
     <url>%2F2015%2F06%2F07%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
     <content type="text"><![CDATA[JavaScript数据类型JavaScript中的数据类型分为两种：基本数据类型和复杂数据类型。 基本数据类型 number string boolean undefined null 复杂数据类型 object 如何判断一个变量的数据类型typeof关键字，可以用来返回变量对应的数据类型。]]></content>
@@ -612,6 +613,17 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>js基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[调试工具的使用]]></title>
+    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
 </search>
