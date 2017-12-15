@@ -350,9 +350,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[继承]]></title>
-    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%2F</url>
-    <content type="text"><![CDATA[继承的概念在JavaScript中，继承就是当前对象可以使用其他对象的方法和属性。 12345678910111213141516var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;//当前有两个对象，一个animal,一个dog//dog没有属性和方法//但是我们知道，dog属于animal，所以animal的方法和属性，都可以被dog使用//如何让dog可以使用animal的属性和方法呢？//通过继承就可以实现]]></content>
+    <title><![CDATA[继承的实现方式]]></title>
+    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[继承的实现方式在上一节内容中，最终的结论就是可以通过继承来让dog对象可以使用animal对象的属性和方法，那怎么实现继承呢？ 1. 最简单的继承实现直接遍历父对象的属性，将所有的属性加到当前对象上 1234567891011121314151617var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;for (var k in animal)&#123; dog[k]= animal[k];&#125; 2. 原型继承每一个构造函数都有prototype原型属性，通过构造函数创建出来的对象都继承自该原型属性。所以可以通过更改构造函数的原型属性来实现继承。 12345678910111213141516171819202122232425262728293031323334353637383940function Dog()&#123; this.type = "yellow Dog";&#125;function extend(obj1, obj2)&#123; for (var k in obj2)&#123; obj1[k] = obj2[k]; &#125;&#125;;//使用混入的方式，将属性和方法添加到构造函数的原型属性上，构造函数所创建出来的实例就都有了这些属性和方法。extend(Dog.prototype, &#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;)//使用面向对象的思想把extend方法重新封装//extend是扩展的意思，谁要扩展就主动调用extend这个方法//所以extend应该是对象的方法，那现在我们要扩展的是构造函数的原型对象//所以给构造函数的原型对象添加一个extend方法//如下：Dog.prototype.extend = function(obj)&#123; for (var k in obj)&#123; this[k]=obj[k]; &#125;&#125;//调用方式就变成了下面这种形式Dog.prototype.extend(&#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;);]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -364,9 +364,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[继承的实现方式]]></title>
-    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[继承的实现方式在上一节内容中，最终的结论就是可以通过继承来让dog对象可以使用animal对象的属性和方法，那怎么实现继承呢？ 1. 最简单的继承实现直接遍历父对象的属性，将所有的属性加到当前对象上 1234567891011121314151617var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;for (var k in animal)&#123; dog[k]= animal[k];&#125; 2. 原型继承每一个构造函数都有prototype原型属性，通过构造函数创建出来的对象都继承自该原型属性。所以可以通过更改构造函数的原型属性来实现继承。 12345678910111213141516171819202122232425262728293031323334353637383940function Dog()&#123; this.type = "yellow Dog";&#125;function extend(obj1, obj2)&#123; for (var k in obj2)&#123; obj1[k] = obj2[k]; &#125;&#125;;//使用混入的方式，将属性和方法添加到构造函数的原型属性上，构造函数所创建出来的实例就都有了这些属性和方法。extend(Dog.prototype, &#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;)//使用面向对象的思想把extend方法重新封装//extend是扩展的意思，谁要扩展就主动调用extend这个方法//所以extend应该是对象的方法，那现在我们要扩展的是构造函数的原型对象//所以给构造函数的原型对象添加一个extend方法//如下：Dog.prototype.extend = function(obj)&#123; for (var k in obj)&#123; this[k]=obj[k]; &#125;&#125;//调用方式就变成了下面这种形式Dog.prototype.extend(&#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;);]]></content>
+    <title><![CDATA[继承]]></title>
+    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%2F</url>
+    <content type="text"><![CDATA[继承的概念在JavaScript中，继承就是当前对象可以使用其他对象的方法和属性。 12345678910111213141516var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;//当前有两个对象，一个animal,一个dog//dog没有属性和方法//但是我们知道，dog属于animal，所以animal的方法和属性，都可以被dog使用//如何让dog可以使用animal的属性和方法呢？//通过继承就可以实现]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -544,9 +544,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
+    <title><![CDATA[值类型和引用类型的特征]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
+    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -556,9 +556,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型的特征]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
-    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
+    <title><![CDATA[值类型和引用类型]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
