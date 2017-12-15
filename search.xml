@@ -350,9 +350,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[继承的实现方式]]></title>
-    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[继承的实现方式在上一节内容中，最终的结论就是可以通过继承来让dog对象可以使用animal对象的属性和方法，那怎么实现继承呢？ 1. 最简单的继承实现直接遍历父对象的属性，将所有的属性加到当前对象上 1234567891011121314151617var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;for (var k in animal)&#123; dog[k]= animal[k];&#125; 2. 原型继承每一个构造函数都有prototype原型属性，通过构造函数创建出来的对象都继承自该原型属性。所以可以通过更改构造函数的原型属性来实现继承。 12345678910111213141516171819202122232425262728293031323334353637383940function Dog()&#123; this.type = "yellow Dog";&#125;function extend(obj1, obj2)&#123; for (var k in obj2)&#123; obj1[k] = obj2[k]; &#125;&#125;;//使用混入的方式，将属性和方法添加到构造函数的原型属性上，构造函数所创建出来的实例就都有了这些属性和方法。extend(Dog.prototype, &#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;)//使用面向对象的思想把extend方法重新封装//extend是扩展的意思，谁要扩展就主动调用extend这个方法//所以extend应该是对象的方法，那现在我们要扩展的是构造函数的原型对象//所以给构造函数的原型对象添加一个extend方法//如下：Dog.prototype.extend = function(obj)&#123; for (var k in obj)&#123; this[k]=obj[k]; &#125;&#125;//调用方式就变成了下面这种形式Dog.prototype.extend(&#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;);]]></content>
+    <title><![CDATA[继承]]></title>
+    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%2F</url>
+    <content type="text"><![CDATA[继承的概念在JavaScript中，继承就是当前对象可以使用其他对象的方法和属性。 12345678910111213141516var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;//当前有两个对象，一个animal,一个dog//dog没有属性和方法//但是我们知道，dog属于animal，所以animal的方法和属性，都可以被dog使用//如何让dog可以使用animal的属性和方法呢？//通过继承就可以实现]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -364,9 +364,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[继承]]></title>
-    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%2F</url>
-    <content type="text"><![CDATA[继承的概念在JavaScript中，继承就是当前对象可以使用其他对象的方法和属性。 12345678910111213141516var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;//当前有两个对象，一个animal,一个dog//dog没有属性和方法//但是我们知道，dog属于animal，所以animal的方法和属性，都可以被dog使用//如何让dog可以使用animal的属性和方法呢？//通过继承就可以实现]]></content>
+    <title><![CDATA[继承的实现方式]]></title>
+    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[继承的实现方式在上一节内容中，最终的结论就是可以通过继承来让dog对象可以使用animal对象的属性和方法，那怎么实现继承呢？ 1. 最简单的继承实现直接遍历父对象的属性，将所有的属性加到当前对象上 1234567891011121314151617var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;for (var k in animal)&#123; dog[k]= animal[k];&#125; 2. 原型继承每一个构造函数都有prototype原型属性，通过构造函数创建出来的对象都继承自该原型属性。所以可以通过更改构造函数的原型属性来实现继承。 12345678910111213141516171819202122232425262728293031323334353637383940function Dog()&#123; this.type = "yellow Dog";&#125;function extend(obj1, obj2)&#123; for (var k in obj2)&#123; obj1[k] = obj2[k]; &#125;&#125;;//使用混入的方式，将属性和方法添加到构造函数的原型属性上，构造函数所创建出来的实例就都有了这些属性和方法。extend(Dog.prototype, &#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;)//使用面向对象的思想把extend方法重新封装//extend是扩展的意思，谁要扩展就主动调用extend这个方法//所以extend应该是对象的方法，那现在我们要扩展的是构造函数的原型对象//所以给构造函数的原型对象添加一个extend方法//如下：Dog.prototype.extend = function(obj)&#123; for (var k in obj)&#123; this[k]=obj[k]; &#125;&#125;//调用方式就变成了下面这种形式Dog.prototype.extend(&#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;);]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
