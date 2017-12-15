@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[货币格式化函数]]></title>
     <url>%2F2017%2F12%2F15%2F%E8%B4%A7%E5%B8%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0%2F</url>
-    <content type="text"><![CDATA[测试1111111111111111111]]></content>
+    <content type="text"><![CDATA[测试12345678910111213141516//货币格式化 function formatCurrency(num) &#123; num = num.toString().replace(/\$|\,/g, '') if (isNaN(num)) num = "0" sign = (num == (num = Math.abs(num))) num = Math.floor(num * 100 + 0.50000000001) cents = num % 100 num = Math.floor(num / 100).toString() if (cents &lt; 10) cents = "0" + cents for (var i = 0; i &lt; Math.floor((num.length - (1 + i)) / 3); i++) num = num.substring(0, num.length - (4 * i + 3)) + ',' + num.substring(num.length - (4 * i + 3)) return (((sign) ? '' : '-') + num + '.' + cents) &#125; 保留一位小数1234567891011121314 //货币格式化 function formatCurrencyTenThou(num) &#123; num = num.toString().replace(/\$|\,/g,''); if(isNaN(num)) num = "0"; sign = (num == (num = Math.abs(num))); num = Math.floor(num*10+0.50000000001); cents = num%10; num = Math.floor(num/10).toString(); for (var i = 0; i &lt; Math.floor((num.length-(1+i))/3); i++) num = num.substring(0,num.length-(4*i+3))+','+ num.substring(num.length-(4*i+3)); return (((sign)?'':'-') + num + '.' + cents);&#125; 不保留小数123456function formatPrice(n) &#123; var t = parseInt(n), i, r; for (t = t.toString().replace(/^(\d*)$/, "$1."), t = (t + "00").replace(/(\d*\.\d\d)\d*/, "$1"), t = t.replace(".", ","), i = /(\d)(\d&#123;3&#125;,)/; i.test(t); ) t = t.replace(i, "$1,$2"); return t = t.replace(/,(\d\d)$/, ".$1"), r = t.split("."), r[1] == "00" &amp;&amp; (t = r[0]), t &#125;]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -44,9 +44,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -58,9 +58,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -72,9 +72,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -86,9 +86,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -100,9 +100,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -114,9 +114,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -128,9 +128,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -142,9 +142,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -156,9 +156,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>函数</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>函数</tag>
       </tags>
   </entry>
   <entry>
@@ -169,9 +169,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>函数</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>函数</tag>
       </tags>
   </entry>
   <entry>
@@ -182,9 +182,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>函数</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>函数</tag>
       </tags>
   </entry>
   <entry>
@@ -195,22 +195,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>函数</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[对象/函数重复创建问题]]></title>
-    <url>%2F2016%2F09%2F20%2F%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E5%A4%8D%E5%88%9B%E5%BB%BA%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[1. 发现问题：首先分析如下代码： 12345var arr = [];for(var i = 0; i &lt; 10; i++)&#123; arr.push(&#123;&#125;);&#125;console.log(arr[0]==arr[1]); 由于每次循环都会使用{}创建一个新的对象，所以输出结果为false。 再分析如下代码： 1234567var arr = [];for(var i = 0; i &lt; 10; i++)&#123; arr.push(function()&#123; console.log("Hello JavaScript"); &#125;);&#125;console.log(arr[0]==arr[1]); 跟第一段代码相似，每次循环都会创建一个新的函数，所以输出结果为false。 函数的功能就是用来封装一段代码，方便再次调用。同样功能的函数本来只需要创建一份就可以方便到处调用，但是在上面第二段代码中，被创建了多次，这样就造成了资源浪费。 我们期望的是如下图所示的情况： 2. 解决方案可以对上面第二段代码进行如下改进： 12345678910111213//先定义该函数function printOut()&#123; console.log("Hello JavaScript");&#125;var arr = [];for(var i = 0; i &lt; 10; i++)&#123; //在循环中，不重新创建函数，而是将已经存在的函数拿过来直接使用 //也就是内存中只会有一份函数存在，每次push只是新增一个对该函数的引用而已 arr.push(printOut);&#125;console.log(arr[0]==arr[1]); 3.实际应用在实际开发当中，经常会有给多个元素注册同一个功能的时间处理函数的情况，如下： HTML代码1234567&lt;div&gt;div1&lt;/div&gt;&lt;div&gt;div2&lt;/div&gt;&lt;div&gt;div3&lt;/div&gt;&lt;div&gt;div4&lt;/div&gt; JavaScript代码 12345678var divs = document.getElementsByTagName("div");for(var i = 0; i &lt; divs.length; i++)&#123; var div = divs[i]; div.addEventListener("click",function()&#123; div.firstChild.nodeValue = "我被点击了"; &#125;)&#125; 可以看到，上面用来注册事件代码的方式，会造成同一个功能的函数在内存中创建多个副本出来，这里暂时只有4个div，如果div的数量增加到100个，1000个，10000个，甚至1000000个呢？ 所以需要对上面的代码进行优化，优化的思路就是我们在上面提到的，首先创建一个处理函数，然后在循环中直接使用已经创建好的函数即可，这样内存中就只有一份函数代码存在了。 优化后的JavaScript代码 1234567891011function divClick()&#123; this.firstChild.nodeValue = "我被点击了";&#125;var divs = document.getElementsByTagName("div");for(var i = 0; i &lt; divs.length; i++)&#123; var div = divs[i]; div.addEventListener("click", divClick);&#125;]]></content>
-      <categories>
-        <category>学习资料</category>
-      </categories>
-      <tags>
         <tag>函数</tag>
-        <tag>js高级</tag>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -221,9 +208,22 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>函数</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[对象/函数重复创建问题]]></title>
+    <url>%2F2016%2F09%2F20%2F%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E5%A4%8D%E5%88%9B%E5%BB%BA%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[1. 发现问题：首先分析如下代码： 12345var arr = [];for(var i = 0; i &lt; 10; i++)&#123; arr.push(&#123;&#125;);&#125;console.log(arr[0]==arr[1]); 由于每次循环都会使用{}创建一个新的对象，所以输出结果为false。 再分析如下代码： 1234567var arr = [];for(var i = 0; i &lt; 10; i++)&#123; arr.push(function()&#123; console.log("Hello JavaScript"); &#125;);&#125;console.log(arr[0]==arr[1]); 跟第一段代码相似，每次循环都会创建一个新的函数，所以输出结果为false。 函数的功能就是用来封装一段代码，方便再次调用。同样功能的函数本来只需要创建一份就可以方便到处调用，但是在上面第二段代码中，被创建了多次，这样就造成了资源浪费。 我们期望的是如下图所示的情况： 2. 解决方案可以对上面第二段代码进行如下改进： 12345678910111213//先定义该函数function printOut()&#123; console.log("Hello JavaScript");&#125;var arr = [];for(var i = 0; i &lt; 10; i++)&#123; //在循环中，不重新创建函数，而是将已经存在的函数拿过来直接使用 //也就是内存中只会有一份函数存在，每次push只是新增一个对该函数的引用而已 arr.push(printOut);&#125;console.log(arr[0]==arr[1]); 3.实际应用在实际开发当中，经常会有给多个元素注册同一个功能的时间处理函数的情况，如下： HTML代码1234567&lt;div&gt;div1&lt;/div&gt;&lt;div&gt;div2&lt;/div&gt;&lt;div&gt;div3&lt;/div&gt;&lt;div&gt;div4&lt;/div&gt; JavaScript代码 12345678var divs = document.getElementsByTagName("div");for(var i = 0; i &lt; divs.length; i++)&#123; var div = divs[i]; div.addEventListener("click",function()&#123; div.firstChild.nodeValue = "我被点击了"; &#125;)&#125; 可以看到，上面用来注册事件代码的方式，会造成同一个功能的函数在内存中创建多个副本出来，这里暂时只有4个div，如果div的数量增加到100个，1000个，10000个，甚至1000000个呢？ 所以需要对上面的代码进行优化，优化的思路就是我们在上面提到的，首先创建一个处理函数，然后在循环中直接使用已经创建好的函数即可，这样内存中就只有一份函数代码存在了。 优化后的JavaScript代码 1234567891011function divClick()&#123; this.firstChild.nodeValue = "我被点击了";&#125;var divs = document.getElementsByTagName("div");for(var i = 0; i &lt; divs.length; i++)&#123; var div = divs[i]; div.addEventListener("click", divClick);&#125;]]></content>
+      <categories>
+        <category>学习资料</category>
+      </categories>
+      <tags>
+        <tag>js高级</tag>
+        <tag>JavaScript</tag>
+        <tag>函数</tag>
       </tags>
   </entry>
   <entry>
@@ -234,9 +234,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>函数</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>函数</tag>
       </tags>
   </entry>
   <entry>
@@ -247,9 +247,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>函数</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>函数</tag>
       </tags>
   </entry>
   <entry>
@@ -260,9 +260,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>函数</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>函数</tag>
       </tags>
   </entry>
   <entry>
@@ -273,9 +273,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -287,9 +287,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -301,9 +301,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -315,9 +315,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -329,9 +329,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -343,23 +343,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
-        <tag>原型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[继承的实现方式]]></title>
-    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[继承的实现方式在上一节内容中，最终的结论就是可以通过继承来让dog对象可以使用animal对象的属性和方法，那怎么实现继承呢？ 1. 最简单的继承实现直接遍历父对象的属性，将所有的属性加到当前对象上 1234567891011121314151617var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;for (var k in animal)&#123; dog[k]= animal[k];&#125; 2. 原型继承每一个构造函数都有prototype原型属性，通过构造函数创建出来的对象都继承自该原型属性。所以可以通过更改构造函数的原型属性来实现继承。 12345678910111213141516171819202122232425262728293031323334353637383940function Dog()&#123; this.type = "yellow Dog";&#125;function extend(obj1, obj2)&#123; for (var k in obj2)&#123; obj1[k] = obj2[k]; &#125;&#125;;//使用混入的方式，将属性和方法添加到构造函数的原型属性上，构造函数所创建出来的实例就都有了这些属性和方法。extend(Dog.prototype, &#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;)//使用面向对象的思想把extend方法重新封装//extend是扩展的意思，谁要扩展就主动调用extend这个方法//所以extend应该是对象的方法，那现在我们要扩展的是构造函数的原型对象//所以给构造函数的原型对象添加一个extend方法//如下：Dog.prototype.extend = function(obj)&#123; for (var k in obj)&#123; this[k]=obj[k]; &#125;&#125;//调用方式就变成了下面这种形式Dog.prototype.extend(&#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;);]]></content>
-      <categories>
-        <category>学习资料</category>
-      </categories>
-      <tags>
-        <tag>js高级</tag>
-        <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -371,9 +357,23 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
+        <tag>原型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[继承的实现方式]]></title>
+    <url>%2F2016%2F06%2F07%2F%E7%BB%A7%E6%89%BF%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[继承的实现方式在上一节内容中，最终的结论就是可以通过继承来让dog对象可以使用animal对象的属性和方法，那怎么实现继承呢？ 1. 最简单的继承实现直接遍历父对象的属性，将所有的属性加到当前对象上 1234567891011121314151617var animal = &#123; name:"Animal", sex:"male", age:5, bark:function()&#123; console.log("Animal bark"); &#125;&#125;;var dog = &#123;&#125;;for (var k in animal)&#123; dog[k]= animal[k];&#125; 2. 原型继承每一个构造函数都有prototype原型属性，通过构造函数创建出来的对象都继承自该原型属性。所以可以通过更改构造函数的原型属性来实现继承。 12345678910111213141516171819202122232425262728293031323334353637383940function Dog()&#123; this.type = "yellow Dog";&#125;function extend(obj1, obj2)&#123; for (var k in obj2)&#123; obj1[k] = obj2[k]; &#125;&#125;;//使用混入的方式，将属性和方法添加到构造函数的原型属性上，构造函数所创建出来的实例就都有了这些属性和方法。extend(Dog.prototype, &#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;)//使用面向对象的思想把extend方法重新封装//extend是扩展的意思，谁要扩展就主动调用extend这个方法//所以extend应该是对象的方法，那现在我们要扩展的是构造函数的原型对象//所以给构造函数的原型对象添加一个extend方法//如下：Dog.prototype.extend = function(obj)&#123; for (var k in obj)&#123; this[k]=obj[k]; &#125;&#125;//调用方式就变成了下面这种形式Dog.prototype.extend(&#123; name:"", age:"", sex:"", bark:function()&#123;&#125;&#125;);]]></content>
+      <categories>
+        <category>学习资料</category>
+      </categories>
+      <tags>
         <tag>对象</tag>
+        <tag>js高级</tag>
+        <tag>JavaScript</tag>
         <tag>原型</tag>
       </tags>
   </entry>
@@ -385,9 +385,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
       </tags>
   </entry>
   <entry>
@@ -398,9 +398,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
       </tags>
   </entry>
   <entry>
@@ -411,9 +411,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
       </tags>
   </entry>
   <entry>
@@ -424,8 +424,8 @@
         <category>学习资料</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
         <tag>对象</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -436,9 +436,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
       </tags>
   </entry>
   <entry>
@@ -449,9 +449,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
         <tag>面向对象</tag>
       </tags>
   </entry>
@@ -463,9 +463,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
       </tags>
   </entry>
   <entry>
@@ -476,9 +476,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
       </tags>
   </entry>
   <entry>
@@ -489,9 +489,9 @@
         <category>学习资料</category>
       </categories>
       <tags>
+        <tag>对象</tag>
         <tag>js高级</tag>
         <tag>JavaScript</tag>
-        <tag>对象</tag>
       </tags>
   </entry>
   <entry>
@@ -544,9 +544,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型的特征]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
-    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
+    <title><![CDATA[值类型和引用类型]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -556,9 +556,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
+    <title><![CDATA[值类型和引用类型的特征]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
+    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -592,17 +592,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[调试工具的使用]]></title>
-    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据类型]]></title>
     <url>%2F2015%2F06%2F07%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
     <content type="text"><![CDATA[JavaScript数据类型JavaScript中的数据类型分为两种：基本数据类型和复杂数据类型。 基本数据类型 number string boolean undefined null 复杂数据类型 object 如何判断一个变量的数据类型typeof关键字，可以用来返回变量对应的数据类型。]]></content>
@@ -612,6 +601,17 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>js基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[调试工具的使用]]></title>
+    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
 </search>
