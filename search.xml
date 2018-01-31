@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[call继承,再写一次]]></title>
+    <url>%2F2018%2F01%2F31%2Fcall%20%E7%BB%A7%E6%89%BF%2F</url>
+    <content type="text"><![CDATA[12345例:集合没有数组方法如要让集合有数组方法Array.prototype.forEach.call(集合, function(val, index, arr)&#123;&#125;)]]></content>
+      <categories>
+        <category>js基础</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[~~ 和 **]]></title>
+    <url>%2F2018%2F01%2F24%2F~~%20%E5%92%8C**%20%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[1234567891011~~ 可以实现的效果是将数字的小数部分砍掉,正数运算类似 Math.floor() 但是负数要考虑他的向上取大的问题;实现原理是位运算,具体是实现我也是模棱两可;但是运算速度比调用原生的对象要快,可以采用!** 这是数字的幂运算 是ES8的新增方法 简单说就是 3 ** 3 //27 2 ** 3 //84 ** 2 //16 兼容性 es8 自个看着办吧!]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[video问题]]></title>
+    <url>%2F2018%2F01%2F16%2Fvideo%2F</url>
+    <content type="text"><![CDATA[html5中video标签,若给标签设置隐藏或者不可见,在给视频全屏播放的时候,video标签默认会现在页面中层级最高的位置,并使自身可见,不需要单独给他设置可见.]]></content>
+      <categories>
+        <category>坑</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>css</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[固定定位的问题]]></title>
+    <url>%2F2018%2F01%2F11%2F%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[当元素a使用固定定位的时候,如果元素a有一个祖辈元素有transform属性,元素a的固定定位会失效!!!!]]></content>
+      <categories>
+        <category>坑</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[缓动惯性]]></title>
+    <url>%2F2018%2F01%2F05%2F%E7%BC%93%E5%8A%A8%E6%83%AF%E6%80%A7%2F</url>
+    <content type="text"><![CDATA[Iscroll有控制缓动惯性的方法, mescroll没有这种方法!]]></content>
+      <categories>
+        <category>坑</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>css</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ios实时监测滚动事件]]></title>
+    <url>%2F2018%2F01%2F04%2Fios%E6%BB%9A%E5%8A%A8%E4%BA%8B%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[ios不能实时监测滚动事件,会在缓动惯性的时候失去监测,我使用iscroll或者mescroll做的兼容!]]></content>
+      <categories>
+        <category>坑</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>css</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[transtion兼容问题]]></title>
+    <url>%2F2018%2F01%2F01%2Ftranstion%E5%85%BC%E5%AE%B9%2F</url>
+    <content type="text"><![CDATA[transtion 不兼容ie9,最低兼容IE10!!!!!!]]></content>
+      <categories>
+        <category>坑</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[IE透明元素点透]]></title>
+    <url>%2F2017%2F11%2F16%2Frgba(0%2C0%2C0%2C0)%2F</url>
+    <content type="text"><![CDATA[在IE中,若将一个元素设置成透明,又要将这个元素参与点击等事件的交互,点击事件会不起作用,元素仿佛不存在,要给他设置rgba(0,0,0,0)可以解决点透的问题!]]></content>
+      <categories>
+        <category>坑</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+        <tag>css</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[货币格式化函数]]></title>
     <url>%2F2017%2F09%2F22%2F%E8%B4%A7%E5%B8%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0%2F</url>
     <content type="text"><![CDATA[保留两位小数12345678910111213141516//货币格式化 function formatCurrency(num) &#123; num = num.toString().replace(/\$|\,/g, '') if (isNaN(num)) num = "0" sign = (num == (num = Math.abs(num))) num = Math.floor(num * 100 + 0.50000000001) cents = num % 100 num = Math.floor(num / 100).toString() if (cents &lt; 10) cents = "0" + cents for (var i = 0; i &lt; Math.floor((num.length - (1 + i)) / 3); i++) num = num.substring(0, num.length - (4 * i + 3)) + ',' + num.substring(num.length - (4 * i + 3)) return (((sign) ? '' : '-') + num + '.' + cents) &#125; 保留一位小数1234567891011121314 //货币格式化 function formatCurrencyTenThou(num) &#123; num = num.toString().replace(/\$|\,/g,''); if(isNaN(num)) num = "0"; sign = (num == (num = Math.abs(num))); num = Math.floor(num*10+0.50000000001); cents = num%10; num = Math.floor(num/10).toString(); for (var i = 0; i &lt; Math.floor((num.length-(1+i))/3); i++) num = num.substring(0,num.length-(4*i+3))+','+ num.substring(num.length-(4*i+3)); return (((sign)?'':'-') + num + '.' + cents);&#125; 不保留小数123456function formatPrice(n) &#123; var t = parseInt(n), i, r; for (t = t.toString().replace(/^(\d*)$/, "$1."), t = (t + "00").replace(/(\d*\.\d\d)\d*/, "$1"), t = t.replace(".", ","), i = /(\d)(\d&#123;3&#125;,)/; i.test(t); ) t = t.replace(i, "$1,$2"); return t = t.replace(/,(\d\d)$/, ".$1"), r = t.split("."), r[1] == "00" &amp;&amp; (t = r[0]), t &#125;]]></content>
@@ -544,9 +642,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型的特征]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
-    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
+    <title><![CDATA[值类型和引用类型]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -556,9 +654,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[值类型和引用类型]]></title>
-    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%2F</url>
-    <content type="text"><![CDATA[值类型和引用类型1.值类型(基本数据类型) 数值类型 布尔类型 undefined null 字符串 值类型是存储在栈（stack）中的简单数据，也就是说，它们的值直接存储在变量访问的位置。 12345var num = 10;var str = "hello JS";var flag = true;var un = undefined;var nu = null; 上面定义的这些值类型的数据在内存中的存储如下 2.引用类型(复合数据类型) 对象 数组 函数 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。 1234567891011121314151617181920212223242526272829var arr = [1, 2, 3];var p1 = &#123;name:"张三", age:18&#125;;var p2 = &#123; name:"李四", age:50, son:&#123; name:"李小一", age:18 &#125;&#125;;var p3 = &#123; name:"王五", age:50, children:[ &#123; name:"王小一", age:20 &#125;, &#123; name:"王小二", age:15 &#125;, &#123; name:"王小三", age:12 &#125; ]&#125; 上面定义的这些引用类型的数据在内存中的存储如下]]></content>
+    <title><![CDATA[值类型和引用类型的特征]]></title>
+    <url>%2F2015%2F07%2F11%2F%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%89%B9%E5%BE%81%2F</url>
+    <content type="text"><![CDATA[1. 值类型和引用类型的赋值1.1. 值类型赋值，直接将值复制一份12var num1 = 10;var num2 = num1; 上面两句代码，在内存中的体现为： var num1 = 10;表示变量num1存储的是数字10 将数据拷贝一份，也就是将10拷贝一份，这个时候内存中有两个10 将拷贝的10赋值给num2 1.2. 引用类型赋值，是将地址复制一份 12var p = &#123;name:"张三", age:19&#125;;var p1 = p; 上面两句代码，在内存中的体现为： var p = {name:&quot;张三&quot;, age:19};,p中存储的是对象的地址 赋值就是将变量p中存储的数据，也就是地址拷贝一份, 然后将该数据赋值给p1 此时内存中只有 1 个对象，变量p和p1同时指向这个对象 问题: 利用p1修改的name属性会影响到p中的name 2. 值类型和引用类型做参数考虑如下情况：输出结果是多少？1234567function foo(num)&#123; num++;&#125;var a = 1;foo(a);console.log(a); 继续考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o.age++;&#125;var p = &#123;name:"张三", age:19&#125;;foo(p);console.log(p.age); 总结： 在调用函数的时候，传参的过程其实就是用实参给形参赋值的过程 当参数为值类型的时候，函数内和函数外的两个变量完全不同，仅仅只是存的值一样而已，修改时互不影响 当参数为引用类型的时候，函数内和函数外的两个变量不同，但是共同指向同一个对象，在函数内修改对象数据时会影响外部 扩展： 考虑如下情况：输出结果是多少？ 123456789function foo(o)&#123; o = &#123;name:"张三", age:18&#125;;&#125;var p;foo(p);console.log(p.age);]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -592,17 +690,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[调试工具的使用]]></title>
-    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据类型]]></title>
     <url>%2F2015%2F06%2F07%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
     <content type="text"><![CDATA[JavaScript数据类型JavaScript中的数据类型分为两种：基本数据类型和复杂数据类型。 基本数据类型 number string boolean undefined null 复杂数据类型 object 如何判断一个变量的数据类型typeof关键字，可以用来返回变量对应的数据类型。]]></content>
@@ -612,6 +699,17 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>js基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[调试工具的使用]]></title>
+    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
       </tags>
   </entry>
 </search>
