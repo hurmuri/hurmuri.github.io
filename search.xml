@@ -260,9 +260,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[作用域]]></title>
-    <url>%2F2016%2F10%2F02%2F%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
-    <content type="text"><![CDATA[作用域域，表示的是一个范围，作用域，就是作用范围。 作用域说明的是一个变量可以在什么地方被使用，什么地方不能被使用。 块级作用域JavaScript中没有块级作用域 1234567&#123; var num = 123; &#123; console.log( num ); &#125;&#125;console.log( num ); 上面这段代码在JavaScript中是不会报错的，但是在其他的编程语言中（C#、C、JAVA）会报错。 这是因为，在JavaScript中没有块级作用域，使用{}标记出来的代码块中声明的变量num，是可以被{}外面访问到的。 但是在其他的编程语言中，有块级作用域，那么{}中声明的变量num，是不能在代码块外部访问的，所以报错。 词法作用域什么是词法作用域？ 词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域. 在 js 中词法作用域规则: 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字 例子1：123456789var num = 123;function foo() &#123; console.log( num );&#125;foo(); 例子2：1234if ( false ) &#123; var num = 123;&#125;console.log( num ); // undefiend 例子3：1234567891011var num = 123;function foo() &#123; var num = 456; function func() &#123; console.log( num ); &#125; func();&#125;foo(); 练习：1234567891011121314var num1 = 123;function foo1() &#123; var num1 = 456; function foo2() &#123; num1 = 789; function foo3 () &#123; console.log( num1 ); &#125; foo3(); &#125; foo2();&#125;foo1();console.log( num1 );]]></content>
+    <title><![CDATA[传统构造函数存在的问题]]></title>
+    <url>%2F2016%2F10%2F02%2F%E4%BC%A0%E7%BB%9F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[1. 发现问题现有构造函数如下： 1234567function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = function()&#123; console.log("你好"); &#125;&#125; 调用该构造函数创建对象，并对比创建出来的对象的sayHi方法：1234var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为false 由于每个对象都是由new Person创建出来的，因此每创建一个对象，函数sayHi都会被重新创建一次，这个时候，每个对象都拥有一个独立的，但是功能完全相同的方法。 功能相同的函数，完全没有必要再内存中存在这么多份。所以就造成了资源浪费。 2. 解决问题这里最好的办法就是将函数体放在构造函数之外. 在构造函数中只需要引用该函数即可。 1234567891011121314function sayHello()&#123; console.log("你好");&#125;function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = sayHello;&#125;//调用该构造函数创建对象，并对比创建出来的对象的sayHi方法var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为true 这样写依然存在问题： 全局变量增多，会增加引入框架命名冲突的风险 代码结构混乱，会变得难以维护]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -273,9 +273,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[传统构造函数存在的问题]]></title>
-    <url>%2F2016%2F10%2F02%2F%E4%BC%A0%E7%BB%9F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[1. 发现问题现有构造函数如下： 1234567function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = function()&#123; console.log("你好"); &#125;&#125; 调用该构造函数创建对象，并对比创建出来的对象的sayHi方法：1234var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为false 由于每个对象都是由new Person创建出来的，因此每创建一个对象，函数sayHi都会被重新创建一次，这个时候，每个对象都拥有一个独立的，但是功能完全相同的方法。 功能相同的函数，完全没有必要再内存中存在这么多份。所以就造成了资源浪费。 2. 解决问题这里最好的办法就是将函数体放在构造函数之外. 在构造函数中只需要引用该函数即可。 1234567891011121314function sayHello()&#123; console.log("你好");&#125;function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = sayHello;&#125;//调用该构造函数创建对象，并对比创建出来的对象的sayHi方法var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为true 这样写依然存在问题： 全局变量增多，会增加引入框架命名冲突的风险 代码结构混乱，会变得难以维护]]></content>
+    <title><![CDATA[作用域]]></title>
+    <url>%2F2016%2F10%2F02%2F%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
+    <content type="text"><![CDATA[作用域域，表示的是一个范围，作用域，就是作用范围。 作用域说明的是一个变量可以在什么地方被使用，什么地方不能被使用。 块级作用域JavaScript中没有块级作用域 1234567&#123; var num = 123; &#123; console.log( num ); &#125;&#125;console.log( num ); 上面这段代码在JavaScript中是不会报错的，但是在其他的编程语言中（C#、C、JAVA）会报错。 这是因为，在JavaScript中没有块级作用域，使用{}标记出来的代码块中声明的变量num，是可以被{}外面访问到的。 但是在其他的编程语言中，有块级作用域，那么{}中声明的变量num，是不能在代码块外部访问的，所以报错。 词法作用域什么是词法作用域？ 词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域. 在 js 中词法作用域规则: 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字 例子1：123456789var num = 123;function foo() &#123; console.log( num );&#125;foo(); 例子2：1234if ( false ) &#123; var num = 123;&#125;console.log( num ); // undefiend 例子3：1234567891011var num = 123;function foo() &#123; var num = 456; function func() &#123; console.log( num ); &#125; func();&#125;foo(); 练习：1234567891011121314var num1 = 123;function foo1() &#123; var num1 = 456; function foo2() &#123; num1 = 789; function foo3 () &#123; console.log( num1 ); &#125; foo3(); &#125; foo2();&#125;foo1();console.log( num1 );]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -690,6 +690,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[调试工具的使用]]></title>
+    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据类型]]></title>
     <url>%2F2015%2F06%2F07%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
     <content type="text"><![CDATA[JavaScript数据类型JavaScript中的数据类型分为两种：基本数据类型和复杂数据类型。 基本数据类型 number string boolean undefined null 复杂数据类型 object 如何判断一个变量的数据类型typeof关键字，可以用来返回变量对应的数据类型。]]></content>
@@ -699,17 +710,6 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>js基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[调试工具的使用]]></title>
-    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
 </search>
