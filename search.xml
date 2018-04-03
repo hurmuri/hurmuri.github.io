@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[根据devicePixelRatio来修改meta标签]]></title>
+    <url>%2F2018%2F04%2F03%2Faaaa%2F</url>
+    <content type="text"><![CDATA[根据devicePixelRatio来修改meta标签 一物理像素在不同屏幕的显示效果不一样。要根据devicePixelRatio来修改meta标签的scale,要注释上面的meta标签 12345678910111213141516171819202122232425262728293031323334(function()&#123; return; var dpr = scale =1; var isIPhone = win.navigator.appVersion.match(/iphone/gi); var devicePixelRatio = win.devicePixelRatio; if (isIPhone) &#123; // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案 if (devicePixelRatio &gt;= 3 &amp;&amp; (!dpr || dpr &gt;= 3)) &#123; dpr = 3; &#125; else if (devicePixelRatio &gt;= 2 &amp;&amp; (!dpr || dpr &gt;= 2))&#123; dpr = 2; &#125; else &#123; dpr = 1; &#125; &#125; else &#123; // 其他设备下，仍旧使用1倍的方案 dpr = 1; &#125; scale = 1 / dpr; // var metaEl = ""; metaEl = doc.createElement('meta'); metaEl.setAttribute('name', 'viewport'); metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no'); if (docEl.firstElementChild) &#123; docEl.firstElementChild.appendChild(metaEl); &#125; else &#123; var wrap = doc.createElement('div'); wrap.appendChild(metaEl); doc.write(wrap.innerHTML); &#125;&#125;)();]]></content>
+      <categories>
+        <category>学习资料</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[iOS圆角出现白色背景]]></title>
     <url>%2F2018%2F03%2F08%2Fios%E5%9C%86%E8%A7%92%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%99%BD%E8%89%B2%E8%83%8C%E6%99%AF%2F</url>
     <content type="text"><![CDATA[部分IOS机型在下,有圆角属性的盒子,做过transition动画后,圆角的背后会出现白色背景具体机型不知暂时解决方案: 在案例中增加了 transform: rotate(45deg); 这个属性后,白色背景消失.]]></content>
@@ -43,9 +55,9 @@
         <category>坑</category>
       </categories>
       <tags>
+        <tag>html</tag>
         <tag>js</tag>
         <tag>css</tag>
-        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -56,8 +68,8 @@
         <category>坑</category>
       </categories>
       <tags>
-        <tag>css</tag>
         <tag>html</tag>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -68,9 +80,9 @@
         <category>坑</category>
       </categories>
       <tags>
+        <tag>html</tag>
         <tag>js</tag>
         <tag>css</tag>
-        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -81,9 +93,9 @@
         <category>坑</category>
       </categories>
       <tags>
+        <tag>html</tag>
         <tag>js</tag>
         <tag>css</tag>
-        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -94,8 +106,8 @@
         <category>坑</category>
       </categories>
       <tags>
-        <tag>css</tag>
         <tag>html</tag>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -106,9 +118,9 @@
         <category>坑</category>
       </categories>
       <tags>
+        <tag>html</tag>
         <tag>js</tag>
         <tag>css</tag>
-        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -273,9 +285,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[作用域]]></title>
-    <url>%2F2016%2F10%2F02%2F%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
-    <content type="text"><![CDATA[作用域域，表示的是一个范围，作用域，就是作用范围。 作用域说明的是一个变量可以在什么地方被使用，什么地方不能被使用。 块级作用域JavaScript中没有块级作用域 1234567&#123; var num = 123; &#123; console.log( num ); &#125;&#125;console.log( num ); 上面这段代码在JavaScript中是不会报错的，但是在其他的编程语言中（C#、C、JAVA）会报错。 这是因为，在JavaScript中没有块级作用域，使用{}标记出来的代码块中声明的变量num，是可以被{}外面访问到的。 但是在其他的编程语言中，有块级作用域，那么{}中声明的变量num，是不能在代码块外部访问的，所以报错。 词法作用域什么是词法作用域？ 词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域. 在 js 中词法作用域规则: 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字 例子1：123456789var num = 123;function foo() &#123; console.log( num );&#125;foo(); 例子2：1234if ( false ) &#123; var num = 123;&#125;console.log( num ); // undefiend 例子3：1234567891011var num = 123;function foo() &#123; var num = 456; function func() &#123; console.log( num ); &#125; func();&#125;foo(); 练习：1234567891011121314var num1 = 123;function foo1() &#123; var num1 = 456; function foo2() &#123; num1 = 789; function foo3 () &#123; console.log( num1 ); &#125; foo3(); &#125; foo2();&#125;foo1();console.log( num1 );]]></content>
+    <title><![CDATA[传统构造函数存在的问题]]></title>
+    <url>%2F2016%2F10%2F02%2F%E4%BC%A0%E7%BB%9F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[1. 发现问题现有构造函数如下： 1234567function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = function()&#123; console.log("你好"); &#125;&#125; 调用该构造函数创建对象，并对比创建出来的对象的sayHi方法：1234var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为false 由于每个对象都是由new Person创建出来的，因此每创建一个对象，函数sayHi都会被重新创建一次，这个时候，每个对象都拥有一个独立的，但是功能完全相同的方法。 功能相同的函数，完全没有必要再内存中存在这么多份。所以就造成了资源浪费。 2. 解决问题这里最好的办法就是将函数体放在构造函数之外. 在构造函数中只需要引用该函数即可。 1234567891011121314function sayHello()&#123; console.log("你好");&#125;function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = sayHello;&#125;//调用该构造函数创建对象，并对比创建出来的对象的sayHi方法var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为true 这样写依然存在问题： 全局变量增多，会增加引入框架命名冲突的风险 代码结构混乱，会变得难以维护]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -286,9 +298,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[传统构造函数存在的问题]]></title>
-    <url>%2F2016%2F10%2F02%2F%E4%BC%A0%E7%BB%9F%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[1. 发现问题现有构造函数如下： 1234567function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = function()&#123; console.log("你好"); &#125;&#125; 调用该构造函数创建对象，并对比创建出来的对象的sayHi方法：1234var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为false 由于每个对象都是由new Person创建出来的，因此每创建一个对象，函数sayHi都会被重新创建一次，这个时候，每个对象都拥有一个独立的，但是功能完全相同的方法。 功能相同的函数，完全没有必要再内存中存在这么多份。所以就造成了资源浪费。 2. 解决问题这里最好的办法就是将函数体放在构造函数之外. 在构造函数中只需要引用该函数即可。 1234567891011121314function sayHello()&#123; console.log("你好");&#125;function Person(name, age)&#123; this.name = name; this.age = age; this.sayHi = sayHello;&#125;//调用该构造函数创建对象，并对比创建出来的对象的sayHi方法var p = new Person("张三", 18);var p1 = new Person("李四", 19);console.log(p.sayHi == p1.sayHi); //输出结果为true 这样写依然存在问题： 全局变量增多，会增加引入框架命名冲突的风险 代码结构混乱，会变得难以维护]]></content>
+    <title><![CDATA[作用域]]></title>
+    <url>%2F2016%2F10%2F02%2F%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
+    <content type="text"><![CDATA[作用域域，表示的是一个范围，作用域，就是作用范围。 作用域说明的是一个变量可以在什么地方被使用，什么地方不能被使用。 块级作用域JavaScript中没有块级作用域 1234567&#123; var num = 123; &#123; console.log( num ); &#125;&#125;console.log( num ); 上面这段代码在JavaScript中是不会报错的，但是在其他的编程语言中（C#、C、JAVA）会报错。 这是因为，在JavaScript中没有块级作用域，使用{}标记出来的代码块中声明的变量num，是可以被{}外面访问到的。 但是在其他的编程语言中，有块级作用域，那么{}中声明的变量num，是不能在代码块外部访问的，所以报错。 词法作用域什么是词法作用域？ 词法( 代码 )作用域, 就是代码在编写过程中体现出来的作用范围. 代码一旦写好, 不用执行, 作用范围就已经确定好了. 这个就是所谓词法作用域. 在 js 中词法作用域规则: 函数允许访问函数外的数据. 整个代码结构中只有函数可以限定作用域. 作用域规则首先使用提升规则分析 如果当前作用规则中有名字了, 就不考虑外面的名字 例子1：123456789var num = 123;function foo() &#123; console.log( num );&#125;foo(); 例子2：1234if ( false ) &#123; var num = 123;&#125;console.log( num ); // undefiend 例子3：1234567891011var num = 123;function foo() &#123; var num = 456; function func() &#123; console.log( num ); &#125; func();&#125;foo(); 练习：1234567891011121314var num1 = 123;function foo1() &#123; var num1 = 456; function foo2() &#123; num1 = 789; function foo3 () &#123; console.log( num1 ); &#125; foo3(); &#125; foo2();&#125;foo1();console.log( num1 );]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -312,9 +324,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[函数模式]]></title>
-    <url>%2F2016%2F09%2F20%2F%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[函数模式特征:就是一个简单的函数调用，函数名前面没有任何的引导内容 123456function foo()&#123;&#125;var func = function()&#123;&#125;foo();func();(function()&#123;&#125;)(); this在函数模式中的含义：this在函数中表示全局对象，在浏览器中是window对象 方法模式特征: 方法一定是依附于一个对象, 将函数赋值给对象的一个属性, 那么就成为了方法. 1234567function f() &#123; this.method = function () &#123;&#125;;&#125;var o = &#123; method: function () &#123;&#125;&#125; this在方法模式调用中的含义:表示函数所依附的这个对象 构造器调用模式由于构造函数只是给 this 添加成员. 没有做其他事情. 而方法也可以完成这个操作, 就 this 而言, 构造函数与方法没有本质区别. 特征:使用 new 关键字, 来引导构造函数. 1234567function Person()&#123; this.name = "zhangsan"; this.age = 19; this.sayHello = function()&#123; &#125;;&#125;var p = new Person(); 构造函数中发this与方法中一样, 表示对象, 但是构造函数中的对象是刚刚创建出来的对象 关于构造函数中return关键字的补充说明 构造函数中不需要return, 就会默认的return this 如果手动的添加return, 就相当于 return this 如果手动的添加return 基本类型; 无效, 还是保留原来 返回this 如果手动添加return null; 或return undefiend, 无效 如果手动添加return 对象类型; 那么原来创建的this就会被丢掉, 返回的是 return后面的对象 创建对象的模式工厂方法123456789// 工厂就是用来生产的, 因此如果函数创建对象并返回, 就称该函数为工厂函数function createPerson( name, age, gender ) &#123; var o = &#123;&#125;; o.name = name; o.age = age; o.gender = gender; return o;&#125;// document.createElement() 构造方法1234567function Person(name, age, gender)&#123; this.name = name; this.age = age; this.gender = gender;&#125;var p = new Person("zhangsan", 19, "男"); 寄生式创建对象12345678910function Person(name, age, gender)&#123; var o = &#123;&#125;; o.name = name; o.age = age; o.gender = gender; return o;&#125;var p = new Person("Jack", 18, "male"); 混合式创建混合式继承就是讲所有的属性放在构造方法里面，然后讲所有的方法放在原型里面，使用构造方法和原型配合起来创建对象。 上下文调用模式上下文(Context)，就是函数调用所处的环境。 上下文调用，也就是自定义设置this的含义。 在其他三种调用模式中，函数/方法在调用的时候，this的值都是指定好了的，我们没办法自己进行设置，如果尝试去给this赋值，会报错。 上下文调用的语法12345678910//第一种， apply函数名.apply(对象, [参数]);//第二种， call函数名.call(对象, 参数);//上面两种方式的功能一模一样，只是在传递参数的时候有差异。 功能描述： 语法中的函数名表示的就是函数本身，使用函数调用模式的时候，this默认是全局对象 语法中的函数名也可以是方法(如:obj.method)，在使用方法模式调用的时候，this默认是指当前对象 在使用apply和call的时候，默认的this都会失效，this的值由apply和call的第一个参数决定 补充说明 如果函数或方法中没有this的操作, 那么无论什么调用其实都一样. 如果是函数调用foo(), 那么有点像foo.apply( window ). 如果是方法调用o.method(), 那么有点像o.method.apply( o ). 参数问题call和apply在没有后面的参数的情况下(函数无参数, 方法无参数) 是完全一样的. 如下： 123456789101112function foo() &#123; console.log( this );&#125;foo.apply( obj );foo.call( obj ); 第一个参数的使用规则: 如果传入的是一个对象, 那么就相当于设置该函数中的 this 为参数 如果不传入参数, 或传入 null. undefiend 等, 那么相当于 this 默认为 window 12345678foo();foo.apply();foo.apply( null );foo.call( undefined ); 如果传入的是基本类型, 那么 this 就是基本类型对应的包装类型的引用 number -&gt; Number boolean -&gt; Boolean string -&gt; String 第二个参数的使用规则 在使用上下文调用的时候, 原函数(方法)可能会带有参数, 那么这个参数在上下文调用中使用第二个( 第 n 个 )参数来表示 123456789101112function foo( num ) &#123; console.log( num );&#125;foo.apply( null, [ 123 ] );// 等价于foo( 123 ); 上下文调用模式的应用上下文调用只是能修改this, 但是使用的最多的地方上是函数借用. 1. 将伪数组转换为数组传统的做法：1234567891011var a = &#123;&#125;;a[ 0 ] = 'a';a[ 1 ] = 'b';a.length = 2;// 使用数组自带的方法 concat// 如果参数中有数组会把参数数组展开// 语法: arr.concat( 1, 2, 3, [ 4, [ 5 ] ] );// 特点：不修改原数组var arr = [];var newArr = arr.concat( a ); 由于a是伪数组, 只是长得像数组. 所以上面的代码不能成功，不能使用concat方法。 但是apply方法有一个特性, 可以将数组或伪数组作为参数。（IE8不支持伪数组操作） 1foo.apply( obj, 伪数组 ); // IE8 不支持 利用apply方法，可以写出以下12//将伪数组 a 作为 apply 的第二个参数var newArr = Array.prototype.concat.apply( [], a ) 处理数组转换, 实际上就是将元素一个一个的取出来构成一个新数组, 凡是涉及到该操作的方法理论上都可以。 push方法1234567891011121314//用法:arr.push( 1 ); //将这个元素加到数组中, 并返回所加元素的个数arr.push( 1, 2, 3 ); //将这三个元素依次加到数组中, 返回所加个数var a = &#123; length: 0 &#125;; // 伪数组a[ a.length++ ] = 'abc'; // a[ 0 ] = 'abc'; a.length++;a[ a.length++ ] = 'def';// 使用一个空数组, 将元素一个个放到数组中即可var arr = [];arr.push( a ); // 此时不会将元素展开, 而是将这个伪数组作为一个元素加到数组中// 再次利用 apply 可以展开伪数组的特征arr.push.apply( arr, a );// 利用 apply 可以展开伪数组的特性, 这里就相当于 arr.push( a[0], a[1] ) 2. 求数组中的最大值传统的做法 123456var max = arr[ 0 ];for ( var i = 1; i &lt; arr.length; i++ ) &#123; if ( arr[ i ] &gt; max ) &#123; ... &#125;&#125; 在 js 中的Math对象中提供了很多数学函数Math.max( 1,2,3 ) 还是利用 apply 可以展开数组的特性 12var arr = [ 123456,12345,1234,345345,234,5 ];Math.max.apply( null, arr ); 3.借用构造函数继承123456789101112function Person ( name, age, gender ) &#123; this.name = name; this.age = age; this.gender = gender;&#125;// 需要提供一个 Student 的构造函数创建学生对象// 学生也应该有 name, age, gender, 同时还需要有 course 课程function Student ( name, age, gender, course ) &#123; Person.call( this, name, age, gender ); this.course = course;&#125;]]></content>
+    <title><![CDATA[对象/函数重复创建问题]]></title>
+    <url>%2F2016%2F09%2F20%2F%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E5%A4%8D%E5%88%9B%E5%BB%BA%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[1. 发现问题：首先分析如下代码： 12345var arr = [];for(var i = 0; i &lt; 10; i++)&#123; arr.push(&#123;&#125;);&#125;console.log(arr[0]==arr[1]); 由于每次循环都会使用{}创建一个新的对象，所以输出结果为false。 再分析如下代码： 1234567var arr = [];for(var i = 0; i &lt; 10; i++)&#123; arr.push(function()&#123; console.log("Hello JavaScript"); &#125;);&#125;console.log(arr[0]==arr[1]); 跟第一段代码相似，每次循环都会创建一个新的函数，所以输出结果为false。 函数的功能就是用来封装一段代码，方便再次调用。同样功能的函数本来只需要创建一份就可以方便到处调用，但是在上面第二段代码中，被创建了多次，这样就造成了资源浪费。 我们期望的是如下图所示的情况： 2. 解决方案可以对上面第二段代码进行如下改进： 12345678910111213//先定义该函数function printOut()&#123; console.log("Hello JavaScript");&#125;var arr = [];for(var i = 0; i &lt; 10; i++)&#123; //在循环中，不重新创建函数，而是将已经存在的函数拿过来直接使用 //也就是内存中只会有一份函数存在，每次push只是新增一个对该函数的引用而已 arr.push(printOut);&#125;console.log(arr[0]==arr[1]); 3.实际应用在实际开发当中，经常会有给多个元素注册同一个功能的时间处理函数的情况，如下： HTML代码1234567&lt;div&gt;div1&lt;/div&gt;&lt;div&gt;div2&lt;/div&gt;&lt;div&gt;div3&lt;/div&gt;&lt;div&gt;div4&lt;/div&gt; JavaScript代码 12345678var divs = document.getElementsByTagName("div");for(var i = 0; i &lt; divs.length; i++)&#123; var div = divs[i]; div.addEventListener("click",function()&#123; div.firstChild.nodeValue = "我被点击了"; &#125;)&#125; 可以看到，上面用来注册事件代码的方式，会造成同一个功能的函数在内存中创建多个副本出来，这里暂时只有4个div，如果div的数量增加到100个，1000个，10000个，甚至1000000个呢？ 所以需要对上面的代码进行优化，优化的思路就是我们在上面提到的，首先创建一个处理函数，然后在循环中直接使用已经创建好的函数即可，这样内存中就只有一份函数代码存在了。 优化后的JavaScript代码 1234567891011function divClick()&#123; this.firstChild.nodeValue = "我被点击了";&#125;var divs = document.getElementsByTagName("div");for(var i = 0; i &lt; divs.length; i++)&#123; var div = divs[i]; div.addEventListener("click", divClick);&#125;]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -325,9 +337,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[对象/函数重复创建问题]]></title>
-    <url>%2F2016%2F09%2F20%2F%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E5%A4%8D%E5%88%9B%E5%BB%BA%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[1. 发现问题：首先分析如下代码： 12345var arr = [];for(var i = 0; i &lt; 10; i++)&#123; arr.push(&#123;&#125;);&#125;console.log(arr[0]==arr[1]); 由于每次循环都会使用{}创建一个新的对象，所以输出结果为false。 再分析如下代码： 1234567var arr = [];for(var i = 0; i &lt; 10; i++)&#123; arr.push(function()&#123; console.log("Hello JavaScript"); &#125;);&#125;console.log(arr[0]==arr[1]); 跟第一段代码相似，每次循环都会创建一个新的函数，所以输出结果为false。 函数的功能就是用来封装一段代码，方便再次调用。同样功能的函数本来只需要创建一份就可以方便到处调用，但是在上面第二段代码中，被创建了多次，这样就造成了资源浪费。 我们期望的是如下图所示的情况： 2. 解决方案可以对上面第二段代码进行如下改进： 12345678910111213//先定义该函数function printOut()&#123; console.log("Hello JavaScript");&#125;var arr = [];for(var i = 0; i &lt; 10; i++)&#123; //在循环中，不重新创建函数，而是将已经存在的函数拿过来直接使用 //也就是内存中只会有一份函数存在，每次push只是新增一个对该函数的引用而已 arr.push(printOut);&#125;console.log(arr[0]==arr[1]); 3.实际应用在实际开发当中，经常会有给多个元素注册同一个功能的时间处理函数的情况，如下： HTML代码1234567&lt;div&gt;div1&lt;/div&gt;&lt;div&gt;div2&lt;/div&gt;&lt;div&gt;div3&lt;/div&gt;&lt;div&gt;div4&lt;/div&gt; JavaScript代码 12345678var divs = document.getElementsByTagName("div");for(var i = 0; i &lt; divs.length; i++)&#123; var div = divs[i]; div.addEventListener("click",function()&#123; div.firstChild.nodeValue = "我被点击了"; &#125;)&#125; 可以看到，上面用来注册事件代码的方式，会造成同一个功能的函数在内存中创建多个副本出来，这里暂时只有4个div，如果div的数量增加到100个，1000个，10000个，甚至1000000个呢？ 所以需要对上面的代码进行优化，优化的思路就是我们在上面提到的，首先创建一个处理函数，然后在循环中直接使用已经创建好的函数即可，这样内存中就只有一份函数代码存在了。 优化后的JavaScript代码 1234567891011function divClick()&#123; this.firstChild.nodeValue = "我被点击了";&#125;var divs = document.getElementsByTagName("div");for(var i = 0; i &lt; divs.length; i++)&#123; var div = divs[i]; div.addEventListener("click", divClick);&#125;]]></content>
+    <title><![CDATA[函数模式]]></title>
+    <url>%2F2016%2F09%2F20%2F%E5%87%BD%E6%95%B0%E7%9A%84%E5%9B%9B%E7%A7%8D%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[函数模式特征:就是一个简单的函数调用，函数名前面没有任何的引导内容 123456function foo()&#123;&#125;var func = function()&#123;&#125;foo();func();(function()&#123;&#125;)(); this在函数模式中的含义：this在函数中表示全局对象，在浏览器中是window对象 方法模式特征: 方法一定是依附于一个对象, 将函数赋值给对象的一个属性, 那么就成为了方法. 1234567function f() &#123; this.method = function () &#123;&#125;;&#125;var o = &#123; method: function () &#123;&#125;&#125; this在方法模式调用中的含义:表示函数所依附的这个对象 构造器调用模式由于构造函数只是给 this 添加成员. 没有做其他事情. 而方法也可以完成这个操作, 就 this 而言, 构造函数与方法没有本质区别. 特征:使用 new 关键字, 来引导构造函数. 1234567function Person()&#123; this.name = "zhangsan"; this.age = 19; this.sayHello = function()&#123; &#125;;&#125;var p = new Person(); 构造函数中发this与方法中一样, 表示对象, 但是构造函数中的对象是刚刚创建出来的对象 关于构造函数中return关键字的补充说明 构造函数中不需要return, 就会默认的return this 如果手动的添加return, 就相当于 return this 如果手动的添加return 基本类型; 无效, 还是保留原来 返回this 如果手动添加return null; 或return undefiend, 无效 如果手动添加return 对象类型; 那么原来创建的this就会被丢掉, 返回的是 return后面的对象 创建对象的模式工厂方法123456789// 工厂就是用来生产的, 因此如果函数创建对象并返回, 就称该函数为工厂函数function createPerson( name, age, gender ) &#123; var o = &#123;&#125;; o.name = name; o.age = age; o.gender = gender; return o;&#125;// document.createElement() 构造方法1234567function Person(name, age, gender)&#123; this.name = name; this.age = age; this.gender = gender;&#125;var p = new Person("zhangsan", 19, "男"); 寄生式创建对象12345678910function Person(name, age, gender)&#123; var o = &#123;&#125;; o.name = name; o.age = age; o.gender = gender; return o;&#125;var p = new Person("Jack", 18, "male"); 混合式创建混合式继承就是讲所有的属性放在构造方法里面，然后讲所有的方法放在原型里面，使用构造方法和原型配合起来创建对象。 上下文调用模式上下文(Context)，就是函数调用所处的环境。 上下文调用，也就是自定义设置this的含义。 在其他三种调用模式中，函数/方法在调用的时候，this的值都是指定好了的，我们没办法自己进行设置，如果尝试去给this赋值，会报错。 上下文调用的语法12345678910//第一种， apply函数名.apply(对象, [参数]);//第二种， call函数名.call(对象, 参数);//上面两种方式的功能一模一样，只是在传递参数的时候有差异。 功能描述： 语法中的函数名表示的就是函数本身，使用函数调用模式的时候，this默认是全局对象 语法中的函数名也可以是方法(如:obj.method)，在使用方法模式调用的时候，this默认是指当前对象 在使用apply和call的时候，默认的this都会失效，this的值由apply和call的第一个参数决定 补充说明 如果函数或方法中没有this的操作, 那么无论什么调用其实都一样. 如果是函数调用foo(), 那么有点像foo.apply( window ). 如果是方法调用o.method(), 那么有点像o.method.apply( o ). 参数问题call和apply在没有后面的参数的情况下(函数无参数, 方法无参数) 是完全一样的. 如下： 123456789101112function foo() &#123; console.log( this );&#125;foo.apply( obj );foo.call( obj ); 第一个参数的使用规则: 如果传入的是一个对象, 那么就相当于设置该函数中的 this 为参数 如果不传入参数, 或传入 null. undefiend 等, 那么相当于 this 默认为 window 12345678foo();foo.apply();foo.apply( null );foo.call( undefined ); 如果传入的是基本类型, 那么 this 就是基本类型对应的包装类型的引用 number -&gt; Number boolean -&gt; Boolean string -&gt; String 第二个参数的使用规则 在使用上下文调用的时候, 原函数(方法)可能会带有参数, 那么这个参数在上下文调用中使用第二个( 第 n 个 )参数来表示 123456789101112function foo( num ) &#123; console.log( num );&#125;foo.apply( null, [ 123 ] );// 等价于foo( 123 ); 上下文调用模式的应用上下文调用只是能修改this, 但是使用的最多的地方上是函数借用. 1. 将伪数组转换为数组传统的做法：1234567891011var a = &#123;&#125;;a[ 0 ] = 'a';a[ 1 ] = 'b';a.length = 2;// 使用数组自带的方法 concat// 如果参数中有数组会把参数数组展开// 语法: arr.concat( 1, 2, 3, [ 4, [ 5 ] ] );// 特点：不修改原数组var arr = [];var newArr = arr.concat( a ); 由于a是伪数组, 只是长得像数组. 所以上面的代码不能成功，不能使用concat方法。 但是apply方法有一个特性, 可以将数组或伪数组作为参数。（IE8不支持伪数组操作） 1foo.apply( obj, 伪数组 ); // IE8 不支持 利用apply方法，可以写出以下12//将伪数组 a 作为 apply 的第二个参数var newArr = Array.prototype.concat.apply( [], a ) 处理数组转换, 实际上就是将元素一个一个的取出来构成一个新数组, 凡是涉及到该操作的方法理论上都可以。 push方法1234567891011121314//用法:arr.push( 1 ); //将这个元素加到数组中, 并返回所加元素的个数arr.push( 1, 2, 3 ); //将这三个元素依次加到数组中, 返回所加个数var a = &#123; length: 0 &#125;; // 伪数组a[ a.length++ ] = 'abc'; // a[ 0 ] = 'abc'; a.length++;a[ a.length++ ] = 'def';// 使用一个空数组, 将元素一个个放到数组中即可var arr = [];arr.push( a ); // 此时不会将元素展开, 而是将这个伪数组作为一个元素加到数组中// 再次利用 apply 可以展开伪数组的特征arr.push.apply( arr, a );// 利用 apply 可以展开伪数组的特性, 这里就相当于 arr.push( a[0], a[1] ) 2. 求数组中的最大值传统的做法 123456var max = arr[ 0 ];for ( var i = 1; i &lt; arr.length; i++ ) &#123; if ( arr[ i ] &gt; max ) &#123; ... &#125;&#125; 在 js 中的Math对象中提供了很多数学函数Math.max( 1,2,3 ) 还是利用 apply 可以展开数组的特性 12var arr = [ 123456,12345,1234,345345,234,5 ];Math.max.apply( null, arr ); 3.借用构造函数继承123456789101112function Person ( name, age, gender ) &#123; this.name = name; this.age = age; this.gender = gender;&#125;// 需要提供一个 Student 的构造函数创建学生对象// 学生也应该有 name, age, gender, 同时还需要有 course 课程function Student ( name, age, gender, course ) &#123; Person.call( this, name, age, gender ); this.course = course;&#125;]]></content>
       <categories>
         <category>学习资料</category>
       </categories>
@@ -703,6 +715,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[调试工具的使用]]></title>
+    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据类型]]></title>
     <url>%2F2015%2F06%2F07%2F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%2F</url>
     <content type="text"><![CDATA[JavaScript数据类型JavaScript中的数据类型分为两种：基本数据类型和复杂数据类型。 基本数据类型 number string boolean undefined null 复杂数据类型 object 如何判断一个变量的数据类型typeof关键字，可以用来返回变量对应的数据类型。]]></content>
@@ -712,17 +735,6 @@
       <tags>
         <tag>JavaScript</tag>
         <tag>js基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[调试工具的使用]]></title>
-    <url>%2F2015%2F06%2F07%2F%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[开启调试窗口windows 平台: f12 调试窗口介绍 指针: 选择页面中的元素 手机: 使用移动端界面调试 Elements: 查看页面 DOM 树 Console: 控制台(注意, 控制台与该页面是一个整体, 在控制台中的任何操作, 会影响到页面) Source: 代码调试 调试工具的使用 逐过程运行, 一次运行一个函数 单步运行(逐步运行), 一次运行一句, 如果是函数, 进入函数体内运行 继续运行. 从当前状态运行下去, 直到出现断点, 如果没有断点则运行结束 设置断点技巧 逐步与逐过程混合 断点加继续运行 条件断点(右键添加 add contitional breakpoint) 利用 watch 监视窗口可以查看对象成员]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
       </tags>
   </entry>
 </search>
